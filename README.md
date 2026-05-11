@@ -1,6 +1,6 @@
-# Polycule Molecule
-
 ![Polycule Molecule banner](screenshots/banner.png)
+
+# Polycule Molecule
 
 Polycule Molecule is a multiplayer relational building game where you court potential lovers using limited resources and form different bonds and connections with others. A top-down social simulation for 1–4 players exploring polyamorous relational dynamics through movement, proximity, and the five love languages. Players share a single screen while each using their own phone as a controller, and simultaneously court persona nodes that drift through a shared arena. Over 12 rounds, bonds form, decay, and branch into emergent network shapes.
 
@@ -118,21 +118,6 @@ Bonds render as glowing edges between player nodes and persona nodes in a live s
 
 ---
 
-## AI Opponents
-
-Any player slot can be set to AI. Six personality types shape targeting, action selection, and movement behavior. AI brains include perception noise and weighted random targeting — they won't play optimally.
-
-| Personality   | Behavior tendency                                                |
-| ------------- | ---------------------------------------------------------------- |
-| **Focused**   | Locks onto the visiting persona; reads propensities carefully    |
-| **Collector** | Pursues already-bonded personas to accumulate connections        |
-| **Nurturer**  | Deepens existing bonds; rarely breaks up                         |
-| **Sharer**    | Targets personas bonded to others; thrives in shared connections |
-| **Chaotic**   | High randomness, elevated breakup chance, unpredictable          |
-| **Wanderer**  | Drifts loosely; opportunistic rather than strategic              |
-
----
-
 ## Phone Controllers & Networking
 
 The game runs an embedded HTTP + WebSocket server on **port 3847** the moment Play is pressed — no Node.js or external server setup required.
@@ -171,24 +156,6 @@ NGROK_DOMAIN=yourname.ngrok-free.dev
 ```
 
 > The authtoken is available at [dashboard.ngrok.com/authtokens](https://dashboard.ngrok.com/authtokens). The `NGROK_EXE` path is almost always required on macOS since Unity spawns processes outside the shell environment and won't find binaries installed via Homebrew or nvm unless the path is explicit.
-
----
-
-## Tuning & Debug
-
-Constants live in `GameConfig` (`GameData.cs`) and `AIConfig` (`AIMode.cs`):
-
-| Constant                 | Default | Effect                               |
-| ------------------------ | ------- | ------------------------------------ |
-| `TotalRounds`            | 12      | Number of persona arrivals           |
-| `ActionsPerTurn`         | 10      | Actions each player gets per round   |
-| `BondThreshold`          | 6.0     | Affinity needed to form a bond       |
-| `MaxAffinity`            | 100.0   | Affinity cap per player-persona pair |
-| `AffinityDecayRate`      | 1.0     | How fast idle affinity drains        |
-| `MaxResourcesPerType`    | 4       | Per-resource cap                     |
-| `CourtingProximityRange` | 2.5     | Distance at which actions register   |
-
-Console logs surface persona propensities on spawn and bond events on formation. If port 3847 is already occupied when entering Play, Unity will warn in the console — free it with `lsof -ti :3847 | xargs kill` and re-enter Play.
 
 ---
 
