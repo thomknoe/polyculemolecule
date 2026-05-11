@@ -6,6 +6,12 @@ Polycule Molecule is a multiplayer relational building game where you court pote
 
 > **Platform:** macOS only. Windows and Linux ports are planned for a future release.
 
+## Trailer
+
+[![Watch the trailer](screenshots/trailer-thumbnail.png)](https://youtu.be/6UW5uM0o4Oc?si=vI0phngD3nayiIOm)
+
+---
+
 ## Screenshots
 
 ![Title screen and QR controller setup](screenshots/01-title-screen.png)
@@ -139,6 +145,9 @@ NGROK_DOMAIN=yourname.ngrok-free.dev
 
 > The authtoken is available at [dashboard.ngrok.com/authtokens](https://dashboard.ngrok.com/authtokens). The `NGROK_EXE` path is almost always required on macOS since Unity spawns processes outside the shell environment and won't find binaries installed via Homebrew or nvm unless the path is explicit.
 
+![Phone controller — lobby screen](screenshots/phone-01-lobby.png)
+![Phone controller — action pad](screenshots/phone-02-action-pad.png)
+
 ## Research Context
 
 _Polycule Molecule_ is a design research prototype created for DESIGN 6197: Games in Research at Cornell University. The game uses play as a method to model and interrogate polyamorous relational structures — examining how the five love languages, asymmetric emotional resources, and hidden compatibility shape the networks people build together. The emergent typologies (Couple, Triad, Quad, Polycule) are not predetermined outcomes but consequences of player choices, resource constraints, and chance.
@@ -147,6 +156,8 @@ _Polycule Molecule_ is a design research prototype created for DESIGN 6197: Game
 
 > **Root theme:** _Meaning-Making in an Opaque, Scarcity-Driven Relational Economy_
 > Players impose narrative, identity, and strategy onto limited information, randomized symbols, and simultaneous action.
+
+[![Playtesting session](screenshots/playtest-thumbnail.png)](https://youtu.be/your-playtest-video-link-here)
 
 ---
 
