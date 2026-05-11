@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#ce5fce">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23ce5fce'/></svg>">
+  <title>Polyamory Controller</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/sfx.js"></script>
+</head>
+
+<body>
+  <div id="app">
+
+
+    <div id="select-screen" class="screen active">
+      <div class="quadrant-grid">
+        <button class="quadrant-card" data-player="0" style="--qcolor: #ce5fce">
+          <span class="quadrant-archetype">The Affirmer</span>
+          <span class="quadrant-hint">Words-first</span>
+        </button>
+        <button class="quadrant-card" data-player="1" style="--qcolor: #26e078">
+          <span class="quadrant-archetype">The Steward</span>
+          <span class="quadrant-hint">Acts-first</span>
+        </button>
+        <button class="quadrant-card" data-player="2" style="--qcolor: #ebc018">
+          <span class="quadrant-archetype">The Gifter</span>
+          <span class="quadrant-hint">Gifts-first</span>
+        </button>
+        <button class="quadrant-card" data-player="3" style="--qcolor: #8488ff">
+          <span class="quadrant-archetype">The Anchor</span>
+          <span class="quadrant-hint">Time &amp; presence</span>
+        </button>
+      </div>
+    </div>
+
+
+    <div id="controller-screen" class="screen">
+      <div class="controller-tab-bar" role="tablist" aria-label="Controller views">
+        <button type="button" class="controller-tab active" role="tab" aria-selected="true" data-tab="play"
+          id="tab-play">Play</button>
+        <button type="button" class="controller-tab" role="tab" aria-selected="false" data-tab="radar"
+          id="tab-radar">Style</button>
+      </div>
+
+      <div id="controller-tab-play" class="controller-tab-panel active" role="tabpanel" aria-labelledby="tab-play">
+        <div class="control-grid">
+          <div class="molecule-view-area">
+            <div class="molecule-stack">
+              <div class="molecule-canvas-wrap">
+                <svg id="molecule-view" viewBox="-4 -4 8 8" aria-label="Your molecule"
+                  preserveAspectRatio="xMidYMid meet"></svg>
+                <div id="action-flash" class="action-flash" aria-hidden="true">
+                  <div class="action-flash-core">
+                    <span class="action-flash-flower" aria-hidden="true">&#x2698;</span>
+                    <span class="action-flash-label"></span>
+                    <span class="action-flash-delta" aria-hidden="true"></span>
+                  </div>
+                </div>
+              </div>
+              <div id="molecule-target-banner" class="molecule-target-banner" aria-live="polite">
+                <div class="mtb-caption" id="mtb-caption">Actions left</div>
+                <div class="mtb-actions" id="mtb-actions-count">-/-</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="controller-flex-spacer" aria-hidden="true"></div>
+
+          <div class="joy-slot">
+            <div id="joystick" class="joystick-container">
+              <div id="joystick-thumb" class="joystick-thumb"></div>
+            </div>
+          </div>
+
+          <div class="controller-flex-spacer" aria-hidden="true"></div>
+
+          <div class="action-grid" role="group" aria-label="Court actions">
+            <button type="button" class="action-btn" data-action="0" aria-label="Affirm"><span
+                class="action-label">Affirm</span></button>
+            <button type="button" class="action-btn" data-action="1" aria-label="Service"><span
+                class="action-label">Service</span></button>
+            <button type="button" class="action-btn" data-action="2" aria-label="Gifts"><span
+                class="action-label">Gifts</span></button>
+            <button type="button" class="action-btn" data-action="3" aria-label="Time"><span
+                class="action-label">Time</span></button>
+            <button type="button" class="action-btn" data-action="4" aria-label="Touch"><span
+                class="action-label">Touch</span></button>
+            <button type="button" class="action-btn" data-action="5" aria-label="Break up"><span
+                class="action-label">Break up</span></button>
+          </div>
+
+          <div class="resource-meters" id="resource-meters" aria-label="Your resources">
+            <div class="res-row" data-key="aff"><span class="res-flower" aria-hidden="true">&#x2698;</span>
+              <div class="res-segments"></div>
+            </div>
+            <div class="res-row" data-key="svc"><span class="res-flower" aria-hidden="true">&#x2698;</span>
+              <div class="res-segments"></div>
+            </div>
+            <div class="res-row" data-key="gif"><span class="res-flower" aria-hidden="true">&#x2698;</span>
+              <div class="res-segments"></div>
+            </div>
+            <div class="res-row" data-key="tim"><span class="res-flower" aria-hidden="true">&#x2698;</span>
+              <div class="res-segments"></div>
+            </div>
+            <div class="res-row" data-key="tou"><span class="res-flower" aria-hidden="true">&#x2698;</span>
+              <div class="res-segments"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="controller-tab-radar" class="controller-tab-panel" role="tabpanel" aria-labelledby="tab-radar">
+        <div class="radar-panel">
+          <h3 class="style-plot-heading">Your Style</h3>
+          <div class="style-plot-block">
+            <div class="radar-svg-wrap">
+              <svg id="love-radar-svg" class="love-radar-svg" viewBox="-1.22 -1.22 2.44 2.44"
+                aria-label="Your session love-language shape" role="img"></svg>
+            </div>
+            <ul class="style-action-summary" id="style-action-summary" aria-label="Action totals"></ul>
+          </div>
+          <div class="style-showcase-wrap" id="style-showcase-wrap">
+            <h3 class="style-showcase-heading">Your Polycule</h3>
+            <div class="style-molecule-showcase" id="style-molecule-showcase" aria-label="Linked partners"></div>
+            <p class="style-showcase-empty" id="style-showcase-empty" hidden></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="game-end-overlay" class="game-end-overlay" aria-hidden="true" role="dialog" aria-modal="true"
+      aria-labelledby="game-end-title">
+      <div class="game-end-panel">
+        <h2 id="game-end-title" class="game-end-title">Session complete</h2>
+        <p class="game-end-sub">Your love language shape</p>
+        <div class="radar-svg-wrap game-end-radar-wrap">
+          <svg id="game-end-radar-svg" class="love-radar-svg" viewBox="-1.22 -1.22 2.44 2.44" aria-hidden="true"></svg>
+        </div>
+        <ul class="radar-legend game-end-legend" id="game-end-legend"></ul>
+        <button type="button" class="game-end-dismiss" id="game-end-dismiss">Continue</button>
+      </div>
+    </div>
+
+    <div id="breakup-confirm" class="confirm-overlay" aria-hidden="true" role="dialog" aria-modal="true"
+      aria-describedby="breakup-confirm-message">
+      <div class="confirm-panel">
+        <p id="breakup-confirm-message" class="confirm-text"></p>
+        <div class="confirm-buttons">
+          <button type="button" class="confirm-btn cancel" id="breakup-cancel">Cancel</button>
+          <button type="button" class="confirm-btn danger" id="breakup-ok">Break up</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="name-modal" class="confirm-overlay" aria-hidden="true" role="dialog" aria-modal="true"
+      aria-labelledby="name-modal-title">
+      <div class="confirm-panel name-panel">
+        <p id="name-modal-title" class="confirm-text">Enter your name</p>
+        <input id="name-input" class="name-input" type="text" maxlength="24" autocomplete="name"
+          placeholder="Your name" />
+        <div class="confirm-buttons">
+          <button type="button" class="confirm-btn cancel" id="name-cancel">Cancel</button>
+          <button type="button" class="confirm-btn" id="name-ok">Continue</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="instructions-overlay" class="instructions-overlay" aria-hidden="true" role="dialog" aria-modal="true"
+      aria-labelledby="instructions-title">
+      <div class="instructions-panel">
+        <h2 id="instructions-title" class="instructions-title">How to play</h2>
+        <div class="instructions-body">
+          <h3 class="instructions-sub">Description</h3>
+          <p><strong>Welcome to Polycule Molecule!</strong> In this game, you are <strong>one of four players</strong>
+            on the shared board and you <strong>move during courting, select personas in the molecule view, and press
+              the
+              love-language buttons</strong> in order to <strong>bond with personas and grow your polycule</strong> over
+            the rounds. You’re not limited to <strong>strangers</strong> who show up each
+            round! You can also court personas who already belong to <strong>another
+              player’s polycule</strong> — get close, tap them in the <strong>molecule view</strong> to target, then
+            spend
+            your actions on whoever you picked.
+          </p>
+
+          <h3 class="instructions-sub">Actions</h3>
+          <p>Each courting round starts with <strong>10 actions</strong>.</p>
+          <p>Every time you press an action button, you spend <strong>one</strong> action.
+            When you reach <strong>0</strong>, you’re pulled back to your <strong>area</strong> and can’t walk out until
+            that courting round ends. The next round refills <strong>10</strong> and you can move on the board again.
+          </p>
+
+          <h3 class="instructions-sub">Controls</h3>
+          <ul class="instructions-list">
+            <li><strong>Joystick</strong> — move your dot on the TV while you have actions and aren’t area-locked.</li>
+            <li><strong>Molecule View</strong> — tap a persona to target them for court actions and breakups.</li>
+            <li><strong>Six buttons</strong> — Affirm, Service, Gifts, Time, Touch, plus <strong>Break up</strong> on a
+              selected partner you’re bonded to.</li>
+            <li><strong>Resource meters</strong> — how much of each love language you can still spend; use them to court
+              personas.</li>
+          </ul>
+        </div>
+        <button type="button" class="instructions-dismiss" id="instructions-dismiss">Got it</button>
+      </div>
+    </div>
+
+    <div id="orientation-prompt" class="orientation-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true"
+      aria-labelledby="orientation-modal-title">
+      <div class="orientation-modal-panel">
+        <div class="orientation-modal-icon" aria-hidden="true">
+          <svg class="orientation-phone-svg" viewBox="0 0 40 72" width="36" height="65" focusable="false">
+            <rect x="6" y="4" width="28" height="64" rx="4" ry="4" fill="none" stroke="currentColor" stroke-width="3" />
+            <line x1="14" y1="12" x2="26" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </div>
+        <p id="orientation-modal-title" class="orientation-modal-title">Flip to vertical</p>
+        <p class="orientation-modal-text">You are holding the phone horizontally. Rotate to <strong>portrait</strong>
+          for the best experience.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const PLAYER_COLORS = ['#ce5fce', '#26e078', '#ebc018', '#8488ff'];
+      /** Free ngrok: send on fetch/API calls to skip the browser warning interstitial (see ngrok docs). */
+      const NGROK_SKIP_HEADER = { 'ngrok-skip-browser-warning': 'true' };
+      function jsonPostHeaders() {
+        return Object.assign({}, NGROK_SKIP_HEADER, { 'Content-Type': 'application/json' });
+      }
+
+      let selectedPlayer = null;
+      let selectedPlayerName = '';
+      let pendingSelectPlayer = null;
+      let claimedNames = ['', '', '', ''];
+      let lastActionSentIndex = -1;
+      let ws = null;
+      let claimed = new Set();
+      let wsReady = false;
+      let latestGameState = null;
+      /** Slot cleared server-side after session end; keeps radar overlay tied to this player index until Continue. */
+      let metricsPlayerIndex = null;
+
+      function sanitizePlayerName(raw) {
+        if (typeof raw !== 'string') return '';
+        return raw.trim().replace(/\s+/g, ' ').slice(0, 24);
+      }
+
+      function submitPlayerName(name) {
+        if (selectedPlayer === null) return;
+        const clean = sanitizePlayerName(name);
+        selectedPlayerName = clean;
+        const msg = JSON.stringify({ type: 'set_name', playerIndex: selectedPlayer, name: clean });
+        if (ws && ws.readyState === WebSocket.OPEN) ws.send(msg);
+        else fetch('/input', { method: 'POST', headers: jsonPostHeaders(), body: msg }).catch(() => { });
+      }
+
+      function openNameModal(playerIndex, seedName) {
+        pendingSelectPlayer = playerIndex;
+        const overlay = document.getElementById('name-modal');
+        const input = document.getElementById('name-input');
+        if (!overlay || !input) return;
+        input.value = sanitizePlayerName(seedName || '');
+        overlay.classList.add('active');
+        overlay.setAttribute('aria-hidden', 'false');
+        setTimeout(() => { input.focus(); input.select(); }, 0);
+      }
+
+      function closeNameModal() {
+        const overlay = document.getElementById('name-modal');
+        if (!overlay) return;
+        overlay.classList.remove('active');
+        overlay.setAttribute('aria-hidden', 'true');
+      }
+
+      function submitNameAndConnect() {
+        const input = document.getElementById('name-input');
+        const p = pendingSelectPlayer;
+        const clean = sanitizePlayerName(input ? input.value : '');
+        if (p == null || p < 0 || p > 3) return;
+        if (!clean) {
+          if (input) input.focus();
+          return;
+        }
+        closeNameModal();
+        pendingSelectPlayer = null;
+        if (ws && ws.readyState === WebSocket.OPEN) {
+          ws.send(JSON.stringify({ type: 'select', playerIndex: p, name: clean }));
+        } else {
+          selectedPlayer = p;
+          selectedPlayerName = clean;
+          submitPlayerName(clean);
+          goToController();
+        }
+      }
+
+      const svgNs = 'http://www.w3.org/2000/svg';
+      const VF = 4;
+      const CLIP_R = 3.78;
+      const PLAYER_R_VF = 0.52;
+      const PARTNER_R_VF = 0.38;
+      const OTHER_PLAYER_R = 0.24;
+      const COURT_STRANGER_R = 0.4;
+      const COURT_RANGE_WORLD = 2.5;
+      const SHARE_PARTNER_R = 0.34;
+      let phoneSelectedPersonaId = -1;
+      const VIEW_SCALE = 1.28;
+      const IDEAL_CLAMP_R = 3.35;
+      const PARTNER_SPREAD = 1.26;
+      const SPRING_K = 40;
+      const SPRING_D = 11;
+      const GLYPH_DIAMETER_FRAC = 0.74;
+      let phonePartnerMotion = new Map();
+      function cssVar(name, fallback) {
+        var v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+        return v || fallback;
+      }
+      const RES_FILL_COLORS = {
+        aff: cssVar('--res-aff', '#ce5fce'),
+        svc: cssVar('--res-svc', '#26e078'),
+        gif: cssVar('--res-gif', '#ebc018'),
+        tim: cssVar('--res-tim', '#8488ff'),
+        tou: cssVar('--res-tou', '#d08070')
+      };
+      const RES_EMPTY_BG = 'rgba(56, 56, 61, 0.96)';
+      const ACTION_LABELS = ['Affirm', 'Service', 'Gifts', 'Time', 'Touch', 'Break up'];
+      const ACTION_COLORS = [
+        RES_FILL_COLORS.aff, RES_FILL_COLORS.svc, RES_FILL_COLORS.gif, RES_FILL_COLORS.tim, RES_FILL_COLORS.tou,
+        cssVar('--action-breakup', '#8a8a92')
+      ];
+      const RADAR_AXIS_LABELS = ACTION_LABELS.slice(0, 5);
+      const RADAR_AXIS_COLORS = ACTION_COLORS.slice(0, 5);
+      const RADAR_INK = '#10101a';
+
+      function loveCountsForPlayer(playerIndex) {
+        if (playerIndex == null || playerIndex < 0 || !latestGameState || !latestGameState.loveLanguageTotals) {
+          return [0, 0, 0, 0, 0];
+        }
+        const t = latestGameState.loveLanguageTotals[playerIndex];
+        if (!t) return [0, 0, 0, 0, 0];
+        return [
+          Number(t.affirm) || 0,
+          Number(t.service) || 0,
+          Number(t.gifts) || 0,
+          Number(t.time) || 0,
+          Number(t.touch) || 0
+        ];
+      }
+
+      function pentagonPointString(radius) {
+        const pts = [];
+        for (let i = 0; i < 5; i++) {
+          const a = -Math.PI / 2 + (i * 2 * Math.PI) / 5;
+          pts.push((radius * Math.cos(a)).toFixed(4) + ',' + (radius * Math.sin(a)).toFixed(4));
+        }
+        return pts.join(' ');
+      }
+
+      function drawLoveRadarSvg(svgEl, counts, accentHex) {
+        if (!svgEl) return;
+        clearSvg(svgEl);
+        const maxR = 0.92;
+        const ringAlphas = [0.11, 0.14, 0.17, 0.2];
+        for (let ri = 0; ri < 4; ri++) {
+          const poly = makeSvg('polygon');
+          attr(poly, 'points', pentagonPointString((maxR * (ri + 1)) / 4));
+          attr(poly, 'fill', 'none');
+          attr(poly, 'stroke', 'rgba(26,26,30,' + ringAlphas[ri] + ')');
+          attr(poly, 'stroke-width', '0.018');
+          svgEl.appendChild(poly);
+        }
+        for (let i = 0; i < 5; i++) {
+          const a = -Math.PI / 2 + (i * 2 * Math.PI) / 5;
+          const l = makeSvg('line');
+          attr(l, 'x1', 0);
+          attr(l, 'y1', 0);
+          attr(l, 'x2', (maxR * Math.cos(a)).toFixed(4));
+          attr(l, 'y2', (maxR * Math.sin(a)).toFixed(4));
+          attr(l, 'stroke', 'rgba(26,26,30,0.09)');
+          attr(l, 'stroke-width', '0.012');
+          svgEl.appendChild(l);
+        }
+        const sum = counts.reduce((s, c) => s + c, 0);
+        const maxV = Math.max(1, Math.max.apply(null, counts));
+        const fr = counts.map(c => (c / maxV) * maxR);
+        const dpts = [];
+        for (let i = 0; i < 5; i++) {
+          const a = -Math.PI / 2 + (i * 2 * Math.PI) / 5;
+          const rad = fr[i];
+          dpts.push((rad * Math.cos(a)).toFixed(4) + ',' + (rad * Math.sin(a)).toFixed(4));
+        }
+        const dataPoly = makeSvg('polygon');
+        attr(dataPoly, 'points', dpts.join(' '));
+        attr(dataPoly, 'fill', sum === 0 ? hexToRgba(accentHex, 0.06) : hexToRgba(accentHex, 0.22));
+        attr(dataPoly, 'stroke', accentHex);
+        attr(dataPoly, 'stroke-width', '0.007');
+        attr(dataPoly, 'stroke-linejoin', 'miter');
+        svgEl.appendChild(dataPoly);
+        for (let i = 0; i < 5; i++) {
+          const a = -Math.PI / 2 + (i * 2 * Math.PI) / 5;
+          const vx = fr[i] * Math.cos(a);
+          const vy = fr[i] * Math.sin(a);
+          const dot = makeSvg('circle');
+          attr(dot, 'cx', vx.toFixed(4));
+          attr(dot, 'cy', vy.toFixed(4));
+          attr(dot, 'r', '0.022');
+          attr(dot, 'fill', accentHex);
+          svgEl.appendChild(dot);
+        }
+        const labelR = 1.1;
+        for (let i = 0; i < 5; i++) {
+          const a = -Math.PI / 2 + (i * 2 * Math.PI) / 5;
+          const lx = labelR * Math.cos(a);
+          const ly = labelR * Math.sin(a) + 0.035;
+          drawText(svgEl, lx, ly, RADAR_AXIS_LABELS[i], 0.092, RADAR_INK);
+        }
+      }
+
+      function fillRadarLegend(ulEl, counts) {
+        if (!ulEl) return;
+        ulEl.innerHTML = '';
+        for (let i = 0; i < 5; i++) {
+          const li = document.createElement('li');
+          li.className = 'radar-legend-item';
+          const sw = document.createElement('span');
+          sw.className = 'radar-legend-swatch';
+          sw.style.background = RADAR_AXIS_COLORS[i];
+          const tx = document.createElement('span');
+          tx.className = 'radar-legend-text';
+          tx.style.color = RADAR_INK;
+          tx.textContent = RADAR_AXIS_LABELS[i] + ' · ' + (counts[i] | 0);
+          li.appendChild(sw);
+          li.appendChild(tx);
+          ulEl.appendChild(li);
+        }
+      }
+
+      function fillStyleActionSummary(ulEl, counts) {
+        if (!ulEl) return;
+        ulEl.innerHTML = '';
+        for (let i = 0; i < 5; i++) {
+          const li = document.createElement('li');
+          li.className = 'style-action-item';
+          const key = document.createElement('span');
+          key.className = 'style-action-key';
+          key.textContent = RADAR_AXIS_LABELS[i];
+          key.style.color = RADAR_AXIS_COLORS[i];
+          const val = document.createElement('span');
+          val.className = 'style-action-val';
+          val.textContent = String(counts[i] | 0);
+          li.appendChild(key);
+          li.appendChild(val);
+          ulEl.appendChild(li);
+        }
+      }
+
+      function personaByIdFromState(personaId) {
+        if (personaId == null || personaId < 0 || !latestGameState || !latestGameState.personas) return null;
+        return latestGameState.personas.find(pr => pr.id === personaId) || null;
+      }
+
+      function bandGradientCss(colors) {
+        if (!colors || !colors.length) return 'var(--panel-muted)';
+        if (colors.length === 1) return colors[0];
+        const n = colors.length;
+        const stops = [];
+        for (let i = 0; i < n; i++) {
+          const start = ((i / n) * 100).toFixed(3) + '%';
+          const end = (((i + 1) / n) * 100).toFixed(3) + '%';
+          stops.push(colors[i] + ' ' + start + ', ' + colors[i] + ' ' + end);
+        }
+        return 'linear-gradient(to top, ' + stops.join(', ') + ')';
+      }
+
+      function updateStyleMoleculeShowcase() {
+        const wrap = document.getElementById('style-showcase-wrap');
+        const root = document.getElementById('style-molecule-showcase');
+        const emptyEl = document.getElementById('style-showcase-empty');
+        if (!root || !emptyEl) return;
+        root.innerHTML = '';
+        if (wrap) wrap.style.setProperty('--showcase-accent', PLAYER_COLORS[selectedPlayer] || 'var(--player-color)');
+        if (selectedPlayer === null) {
+          emptyEl.hidden = true;
+          emptyEl.textContent = '';
+          return;
+        }
+        if (!latestGameState || !latestGameState.players || !latestGameState.players.length) {
+          emptyEl.hidden = false;
+          emptyEl.textContent = 'Waiting for board…';
+          return;
+        }
+        emptyEl.hidden = true;
+        emptyEl.textContent = '';
+        const myBonds = (latestGameState.bonds || []).filter(b => b.playerId === selectedPlayer);
+        const bondIds = [];
+        const seen = new Set();
+        for (let i = 0; i < myBonds.length; i++) {
+          const id = myBonds[i].personaId;
+          if (seen.has(id)) continue;
+          seen.add(id);
+          bondIds.push(id);
+        }
+        const maxSlots = 6;
+        const filled = Math.min(bondIds.length, maxSlots);
+        for (let bi = 0; bi < filled; bi++) {
+          const pid = bondIds[bi];
+          const pr = personaByIdFromState(pid);
+          const summary = bondSummaryForPersona(pid);
+          const shared = summary.length > 1;
+          const cols = bandColorsFromSummary(summary);
+          const gl = pr && pr.glyph ? String(pr.glyph).trim() : '\u2022';
+          const card = document.createElement('div');
+          card.className = 'mol-show-card';
+          card.dataset.shared = shared ? '1' : '0';
+          const icon = document.createElement('div');
+          icon.className = 'mol-show-icon';
+          const disc = document.createElement('div');
+          disc.className = 'mol-show-disc';
+          disc.style.background = bandGradientCss(cols);
+          const glyph = document.createElement('span');
+          glyph.className = 'mol-show-glyph';
+          glyph.textContent = gl;
+          glyph.setAttribute('aria-hidden', 'true');
+          icon.appendChild(disc);
+          icon.appendChild(glyph);
+          const meta = document.createElement('div');
+          meta.className = 'mol-show-meta';
+          const myBond = summary.find(s => s.playerId === selectedPlayer);
+          if (myBond) {
+            const heartsRow = document.createElement('div');
+            heartsRow.className = 'mol-show-hearts';
+            const h = document.createElement('span');
+            h.className = 'mol-show-heartline';
+            h.style.color = myBond.color;
+            h.textContent = (myBond.hearts | 0) + '\u00D7\u2665';
+            heartsRow.appendChild(h);
+            meta.appendChild(heartsRow);
+          }
+          card.appendChild(icon);
+          card.appendChild(meta);
+          root.appendChild(card);
+        }
+        for (let pi = filled; pi < maxSlots; pi++) {
+          const ph = document.createElement('div');
+          ph.className = 'mol-show-card mol-show-placeholder';
+          ph.setAttribute('aria-hidden', 'true');
+          root.appendChild(ph);
+        }
+      }
+
+      function redrawSessionRadar() {
+        if (selectedPlayer === null) {
+          updateStyleMoleculeShowcase();
+          return;
+        }
+        const svg = document.getElementById('love-radar-svg');
+        const summary = document.getElementById('style-action-summary');
+        const accent = PLAYER_COLORS[selectedPlayer] || '#ce5fce';
+        const counts = loveCountsForPlayer(selectedPlayer);
+        drawLoveRadarSvg(svg, counts, accent);
+        fillStyleActionSummary(summary, counts);
+        updateStyleMoleculeShowcase();
+      }
+
+      function redrawGameEndRadar() {
+        const svg = document.getElementById('game-end-radar-svg');
+        const leg = document.getElementById('game-end-legend');
+        const pi = metricsPlayerIndex !== null && metricsPlayerIndex >= 0 ? metricsPlayerIndex : selectedPlayer;
+        if (pi === null || pi < 0) return;
+        const accent = PLAYER_COLORS[pi] || '#ce5fce';
+        const counts = loveCountsForPlayer(pi);
+        drawLoveRadarSvg(svg, counts, accent);
+        fillRadarLegend(leg, counts);
+      }
+
+      function showGameEndOverlay() {
+        const o = document.getElementById('game-end-overlay');
+        if (!o) return;
+        const pi = metricsPlayerIndex !== null && metricsPlayerIndex >= 0 ? metricsPlayerIndex : selectedPlayer;
+        if (pi === null || pi < 0) return;
+        o.classList.add('active');
+        o.setAttribute('aria-hidden', 'false');
+        redrawGameEndRadar();
+      }
+
+      function dismissGameEndOverlay() {
+        const o = document.getElementById('game-end-overlay');
+        if (!o) return;
+        o.classList.remove('active');
+        o.setAttribute('aria-hidden', 'true');
+        metricsPlayerIndex = null;
+      }
+
+      function setControllerTab(tab) {
+        const play = tab === 'play';
+        const controller = document.getElementById('controller-screen');
+        document.querySelectorAll('.controller-tab').forEach(b => {
+          const on = b.dataset.tab === tab;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        const playPanel = document.getElementById('controller-tab-play');
+        const radarPanel = document.getElementById('controller-tab-radar');
+        if (playPanel) playPanel.classList.toggle('active', play);
+        if (radarPanel) radarPanel.classList.toggle('active', !play);
+        if (controller) controller.classList.toggle('style-tab-active', !play);
+        if (play) {
+          if (document.getElementById('controller-screen').classList.contains('active')) startMoleculeLoop();
+        } else {
+          redrawSessionRadar();
+        }
+      }
+
+      function isPlayTabActive() {
+        const p = document.getElementById('controller-tab-play');
+        return p && p.classList.contains('active');
+      }
+
+      function isPersonaBondedToSelectedPlayer(personaId) {
+        if (selectedPlayer == null || personaId < 0 || !latestGameState) return false;
+        for (const b of (latestGameState.bonds || [])) {
+          if (b.personaId === personaId && b.playerId === selectedPlayer) return true;
+        }
+        return false;
+      }
+      let breakupConfirmCallback = null;
+      function openBreakupConfirm(onConfirm) {
+        const overlay = document.getElementById('breakup-confirm');
+        const msg = document.getElementById('breakup-confirm-message');
+        if (!overlay || !msg) { if (typeof onConfirm === 'function') onConfirm(); return; }
+        msg.textContent = 'Are you sure you want to break up?';
+        breakupConfirmCallback = onConfirm;
+        overlay.classList.add('active');
+        overlay.setAttribute('aria-hidden', 'false');
+      }
+      function closeBreakupConfirm() {
+        const overlay = document.getElementById('breakup-confirm');
+        if (overlay) {
+          overlay.classList.remove('active');
+          overlay.setAttribute('aria-hidden', 'true');
+        }
+        breakupConfirmCallback = null;
+      }
+      function confirmBreakup() {
+        const fn = breakupConfirmCallback;
+        closeBreakupConfirm();
+        if (typeof fn === 'function') fn();
+      }
+      let moleculeRaf = null;
+      let lastMoleculeTime = 0;
+
+      function clearSvg(el) { while (el.firstChild) el.removeChild(el.firstChild); }
+      function attr(el, name, value) { el.setAttribute(name, value); }
+      function makeSvg(tag) { return document.createElementNS(svgNs, tag); }
+
+      function drawCircle(parent, x, y, r, fill, stroke, width, dashArray) {
+        const c = makeSvg('circle');
+        attr(c, 'cx', x); attr(c, 'cy', y); attr(c, 'r', r);
+        attr(c, 'fill', fill);
+        if (stroke) {
+          attr(c, 'stroke', stroke);
+          attr(c, 'stroke-width', width || 1);
+          if (dashArray) attr(c, 'stroke-dasharray', dashArray);
+        }
+        parent.appendChild(c);
+      }
+      function drawText(parent, x, y, text, size, fill) {
+        const t = makeSvg('text');
+        attr(t, 'x', x); attr(t, 'y', y);
+        attr(t, 'font-size', size || 10);
+        attr(t, 'fill', fill || '#1a1a1e');
+        attr(t, 'text-anchor', 'middle');
+        attr(t, 'dominant-baseline', 'central');
+        attr(t, 'alignment-baseline', 'central');
+        attr(t, 'font-weight', 'normal');
+        t.textContent = text;
+        parent.appendChild(t);
+      }
+
+      function zodiacFontSizeForRadius(r) {
+        return r * 2 * GLYPH_DIAMETER_FRAC;
+      }
+
+      const ZODIAC_NUDGE_PX = 6;
+      function zodiacNudgeYDown(svg) {
+        const h = svg.getBoundingClientRect().height;
+        if (!h || h < 4) return (ZODIAC_NUDGE_PX / 280) * (VF * 2);
+        return (ZODIAC_NUDGE_PX / h) * (VF * 2);
+      }
+      function drawLine(parent, x1, y1, x2, y2, color, width, lineCap) {
+        const l = makeSvg('line');
+        attr(l, 'x1', x1); attr(l, 'y1', y1); attr(l, 'x2', x2); attr(l, 'y2', y2);
+        attr(l, 'stroke', color);
+        attr(l, 'stroke-width', width || 0.08);
+        attr(l, 'stroke-linecap', lineCap || 'round');
+        parent.appendChild(l);
+      }
+
+      function bondSummaryForPersona(personaId) {
+        const out = [];
+        if (!latestGameState || typeof personaId !== 'number') return out;
+        for (const b of (latestGameState.bonds || [])) {
+          if (b.personaId !== personaId) continue;
+          const col = PLAYER_COLORS[b.playerId] || '#888888';
+          const h = Math.max(1, (typeof b.bondHearts === 'number' ? b.bondHearts : 0) | 0);
+          out.push({ playerId: b.playerId, hearts: h, color: col });
+        }
+        out.sort((a, b) => a.playerId - b.playerId);
+        if (out.length <= 1) return out;
+        const per = (latestGameState.personas || []).find(p => p.id === personaId);
+        const primary = per && typeof per.primaryBondPlayerId === 'number' ? per.primaryBondPlayerId : -1;
+        if (primary < 0 || !out.some(s => s.playerId === primary)) return out;
+        const rest = out.filter(s => s.playerId !== primary);
+        const pr = out.find(s => s.playerId === primary);
+        return [pr].concat(rest);
+      }
+
+      const HEART_TO_GLYPH_RATIO = 62 / 84;
+      const HEART_LINE_STEP_VF = 0.29;
+
+      function drawBondHeartsAbove(parent, cx, cy, discR, glyphFontSize, summary) {
+        if (!summary || summary.length === 0) return;
+        const fs = glyphFontSize * HEART_TO_GLYPH_RATIO;
+        const topY = cy - discR - 0.065;
+        for (let i = 0; i < summary.length; i++) {
+          const y = topY - i * HEART_LINE_STEP_VF;
+          const line = Math.max(1, summary[i].hearts | 0) + '\u00D7\u2665';
+          drawText(parent, cx, y, line, fs, summary[i].color);
+        }
+      }
+
+      function bandColorsFromSummary(summary) {
+        if (summary.length > 0) return summary.map(s => s.color);
+        return [];
+      }
+
+      function drawBandedDisc(parent, cx, cy, r, colors, stroke, strokeW) {
+        const n = colors.length;
+        if (n === 0) {
+          drawCircle(parent, cx, cy, r, '#f4f4f2', stroke, strokeW);
+          return;
+        }
+        if (n === 1) {
+          drawCircle(parent, cx, cy, r, colors[0], stroke, strokeW);
+          return;
+        }
+        const svgRoot = parent.ownerSVGElement || (parent.closest && parent.closest('svg'));
+        if (!svgRoot) {
+          drawCircle(parent, cx, cy, r, colors[0], stroke, strokeW);
+          return;
+        }
+        let defsEl = svgRoot.querySelector('defs');
+        if (!defsEl) {
+          defsEl = makeSvg('defs');
+          svgRoot.insertBefore(defsEl, svgRoot.firstChild);
+        }
+        const clipId = 'hb-' + ((Math.random() * 1e9) | 0);
+        const cp = makeSvg('clipPath');
+        attr(cp, 'id', clipId);
+        const clipCirc = makeSvg('circle');
+        attr(clipCirc, 'cx', cx);
+        attr(clipCirc, 'cy', cy);
+        attr(clipCirc, 'r', r);
+        cp.appendChild(clipCirc);
+        defsEl.appendChild(cp);
+
+        const grp = makeSvg('g');
+        attr(grp, 'clip-path', 'url(#' + clipId + ')');
+
+        for (let b = 0; b < n; b++) {
+          const vyTop = 1 - (b + 1) / n;
+          const vyBot = 1 - b / n;
+          const yTop = cy - r + vyTop * (2 * r);
+          const yBot = cy - r + vyBot * (2 * r);
+          const rect = makeSvg('rect');
+          attr(rect, 'x', cx - r - 1);
+          attr(rect, 'y', yTop);
+          attr(rect, 'width', 2 * r + 2);
+          attr(rect, 'height', Math.max(yBot - yTop, 0.001));
+          attr(rect, 'fill', colors[b]);
+          grp.appendChild(rect);
+        }
+        parent.appendChild(grp);
+        if (stroke) {
+          drawCircle(parent, cx, cy, r, 'none', stroke, strokeW);
+        }
+      }
+
+      function hexToRgba(hex, a) {
+        const r = parseInt(hex.substring(1, 3), 16);
+        const g = parseInt(hex.substring(3, 5), 16);
+        const b = parseInt(hex.substring(5, 7), 16);
+        return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+      }
+
+      function worldDist(ax, ay, bx, by) {
+        return Math.hypot((ax || 0) - (bx || 0), (ay || 0) - (by || 0));
+      }
+
+      function setupMoleculeClip(svg) {
+        const uid = 'mc-' + ((Math.random() * 1e9) | 0);
+        const defs = makeSvg('defs');
+        const cp = makeSvg('clipPath');
+        attr(cp, 'id', uid);
+        const clipC = makeSvg('circle');
+        attr(clipC, 'cx', 0);
+        attr(clipC, 'cy', 0);
+        attr(clipC, 'r', CLIP_R);
+        cp.appendChild(clipC);
+        defs.appendChild(cp);
+        svg.appendChild(defs);
+        const g = makeSvg('g');
+        attr(g, 'clip-path', 'url(#' + uid + ')');
+        svg.appendChild(g);
+        return g;
+      }
+
+      function ensureResSegments(container, count) {
+        while (container.children.length < count) {
+          const s = document.createElement('div');
+          s.className = 'res-seg';
+          container.appendChild(s);
+        }
+        while (container.children.length > count) container.removeChild(container.lastChild);
+      }
+
+      function parseBondCsv(csv) {
+        if (csv == null || String(csv).trim() === '') return [];
+        return String(csv).split(',').map(s => parseInt(s.trim(), 10)).filter(n => !Number.isNaN(n));
+      }
+
+      function updateResourceMeters() {
+        const root = document.getElementById('resource-meters');
+        if (!root || selectedPlayer === null) return;
+        const me = latestGameState && latestGameState.players
+          ? latestGameState.players.find(p => p.id === selectedPlayer) : null;
+        if (!me || typeof me.resAffirm !== 'number') return;
+        const rows = [
+          { key: 'aff', cur: me.resAffirm, max: Math.max(1, me.maxAffirm || 4) },
+          { key: 'svc', cur: me.resService, max: Math.max(1, me.maxService || 4) },
+          { key: 'gif', cur: me.resGifts, max: Math.max(1, me.maxGifts || 4) },
+          { key: 'tim', cur: me.resTime, max: Math.max(1, me.maxTime || 4) },
+          { key: 'tou', cur: me.resTouch, max: Math.max(1, me.maxTouch || 4) }
+        ];
+        rows.forEach(({ key, cur, max }) => {
+          const row = root.querySelector('.res-row[data-key="' + key + '"]');
+          if (!row) return;
+          const box = row.querySelector('.res-segments');
+          if (!box) return;
+          ensureResSegments(box, max);
+          const filled = Math.min(max, Math.max(0, cur | 0));
+          const fillCol = RES_FILL_COLORS[key] || '#888';
+          Array.prototype.forEach.call(box.children, (seg, i) => {
+            seg.classList.toggle('filled', i < filled);
+            seg.style.background = i < filled ? fillCol : RES_EMPTY_BG;
+          });
+        });
+      }
+
+      function idealPartnerPosFromWorld(persona, px, py) {
+        let x = ((persona.x || 0) - px) * VIEW_SCALE;
+        let y = -(((persona.y || 0) - py) * VIEW_SCALE);
+        const r = Math.hypot(x, y);
+        if (r > IDEAL_CLAMP_R && r > 1e-6) {
+          x *= IDEAL_CLAMP_R / r;
+          y *= IDEAL_CLAMP_R / r;
+        }
+        return { x, y };
+      }
+
+      function spreadBondIdeal(ideal) {
+        let x = ideal.x * PARTNER_SPREAD;
+        let y = ideal.y * PARTNER_SPREAD;
+        const r = Math.hypot(x, y);
+        if (r > IDEAL_CLAMP_R && r > 1e-6) {
+          x *= IDEAL_CLAMP_R / r;
+          y *= IDEAL_CLAMP_R / r;
+        }
+        return { x, y };
+      }
+
+      function reachableSharePersonas(me, personas, courtId, bondedIds) {
+        const px = me.x || 0;
+        const py = me.y || 0;
+        const out = [];
+        const plist = personas || [];
+        for (let i = 0; i < plist.length; i++) {
+          const per = plist[i];
+          if (!per || typeof per.id !== 'number') continue;
+          if (bondedIds.has(per.id)) continue;
+          if (typeof courtId === 'number' && courtId >= 0 && per.id === courtId) continue;
+          const dx = (per.x || 0) - px;
+          const dy = (per.y || 0) - py;
+          if (Math.hypot(dx, dy) > COURT_RANGE_WORLD) continue;
+          out.push(per);
+        }
+        return out;
+      }
+
+      function weightedSharedWorldPos(persona, me) {
+        if (!persona || !latestGameState || !latestGameState.players || selectedPlayer === null) {
+          return { x: persona ? (persona.x || 0) : 0, y: persona ? (persona.y || 0) : 0 };
+        }
+        const owners = parseBondCsv(persona.bondedPlayerIds);
+        if (owners.length < 2) return { x: persona.x || 0, y: persona.y || 0 };
+        let primary = (typeof persona.primaryBondPlayerId === 'number') ? persona.primaryBondPlayerId : owners[0];
+        if (!owners.includes(primary)) primary = owners[0];
+        const secondaryCandidates = owners.filter(id => id !== primary);
+        if (secondaryCandidates.length === 0) return { x: persona.x || 0, y: persona.y || 0 };
+
+        let secondary = secondaryCandidates[0];
+        if (selectedPlayer !== primary && secondaryCandidates.includes(selectedPlayer)) secondary = selectedPlayer;
+
+        const primaryPlayer = latestGameState.players.find(p => p.id === primary);
+        const secondaryPlayer = latestGameState.players.find(p => p.id === secondary);
+        if (!primaryPlayer || !secondaryPlayer) return { x: persona.x || 0, y: persona.y || 0 };
+
+        const pEdge = (latestGameState.bonds || []).find(b => b.personaId === persona.id && b.playerId === primary);
+        const sEdge = (latestGameState.bonds || []).find(b => b.personaId === persona.id && b.playerId === secondary);
+        const pWeight = Math.max(1, (pEdge && pEdge.bondHearts) || 0);
+        const sWeight = Math.max(1, (sEdge && sEdge.bondHearts) || 0);
+        const pull = sWeight / (pWeight + sWeight);
+
+        const px = primaryPlayer.x || 0;
+        const py = primaryPlayer.y || 0;
+        const sx = secondaryPlayer.x || 0;
+        const sy = secondaryPlayer.y || 0;
+        const dx = sx - px;
+        const dy = sy - py;
+        const d = Math.hypot(dx, dy);
+        if (d < 1e-4) return { x: persona.x || 0, y: persona.y || 0 };
+
+        const baseR = Math.max(0.95, Math.min(2.2, Math.hypot((persona.x || 0) - px, (persona.y || 0) - py)));
+        const tx = px + (dx / d) * baseR;
+        const ty = py + (dy / d) * baseR;
+        const t = Math.min(0.85, pull * 0.9);
+        return {
+          x: (persona.x || 0) * (1 - t) + tx * t,
+          y: (persona.y || 0) * (1 - t) + ty * t
+        };
+      }
+
+      function bondPlacementsFromGame(bonds, personas, me, dt) {
+        const px = me.x || 0;
+        const py = me.y || 0;
+        const list = [];
+        bonds.forEach(b => {
+          const persona = personas.find(p => p.id === b.personaId);
+          if (!persona) return;
+          const sharedPos = weightedSharedWorldPos(persona, me);
+          const ideal = spreadBondIdeal(idealPartnerPosFromWorld(sharedPos, px, py));
+          list.push({
+            id: b.personaId,
+            glyph: persona.glyph || '\u2022',
+            ideal
+          });
+        });
+        list.sort((a, b) => a.id - b.id);
+
+        const ids = new Set(list.map(t => t.id));
+        const stale = [];
+        phonePartnerMotion.forEach((_, id) => { if (!ids.has(id)) stale.push(id); });
+        stale.forEach(id => phonePartnerMotion.delete(id));
+
+        return list.map(t => {
+          let ph = phonePartnerMotion.get(t.id);
+          if (!ph) {
+            ph = { x: t.ideal.x, y: t.ideal.y, vx: 0, vy: 0 };
+            phonePartnerMotion.set(t.id, ph);
+          }
+          const ax = -SPRING_K * (ph.x - t.ideal.x) - SPRING_D * ph.vx;
+          const ay = -SPRING_K * (ph.y - t.ideal.y) - SPRING_D * ph.vy;
+          ph.vx += ax * dt;
+          ph.vy += ay * dt;
+          ph.x += ph.vx * dt;
+          ph.y += ph.vy * dt;
+          return { id: t.id, glyph: t.glyph, x: ph.x, y: ph.y };
+        });
+      }
+
+      function getFlashDeltaWorld() {
+        if (!latestGameState || selectedPlayer === null) return { tx: 0, ty: -1 };
+        const me = latestGameState.players.find(p => p.id === selectedPlayer);
+        if (!me) return { tx: 0, ty: -1 };
+        const px = me.x || 0;
+        const py = me.y || 0;
+        if (typeof latestGameState.courtingPersonaId === 'number' && latestGameState.courtingPersonaId >= 0
+          && typeof latestGameState.courtingPersonaX === 'number') {
+          return {
+            tx: latestGameState.courtingPersonaX - px,
+            ty: -((latestGameState.courtingPersonaY || 0) - py)
+          };
+        }
+        const personas = latestGameState.personas || [];
+        const bonds = (latestGameState.bonds || []).filter(b => b.playerId === selectedPlayer);
+        if (bonds.length > 0) {
+          const b = bonds[0];
+          const persona = personas.find(p => p.id === b.personaId);
+          if (persona) {
+            return {
+              tx: (persona.x || 0) - px,
+              ty: -((persona.y || 0) - py)
+            };
+          }
+        }
+        return { tx: 0, ty: -1 };
+      }
+
+      let actionFlashTimer = null;
+      function formatAffinityMultiplier(delta) {
+        const d = Number(delta || 0);
+        if (!Number.isFinite(d) || Math.abs(d) < 0.0001) return '';
+        const sign = d > 0 ? '+' : '-';
+        return sign + Math.abs(d).toFixed(1) + 'x';
+      }
+      function showActionFlash(actionIndex, affinityDelta) {
+        const wrap = document.querySelector('.molecule-view-area');
+        const el = document.getElementById('action-flash');
+        if (!wrap || !el) return;
+        const core = el.querySelector('.action-flash-core');
+        const flower = el.querySelector('.action-flash-flower');
+        const label = el.querySelector('.action-flash-label');
+        const deltaEl = el.querySelector('.action-flash-delta');
+        const col = ACTION_COLORS[actionIndex] || '#1a1a1e';
+        const name = ACTION_LABELS[actionIndex] || '';
+        if (flower) flower.style.color = col;
+        if (label) {
+          label.textContent = name;
+          label.style.color = col;
+        }
+        if (deltaEl) {
+          const deltaText = formatAffinityMultiplier(affinityDelta);
+          deltaEl.textContent = deltaText;
+          deltaEl.classList.toggle('positive', !!deltaText && Number(affinityDelta) > 0.0001);
+          deltaEl.classList.toggle('negative', !!deltaText && Number(affinityDelta) < -0.0001);
+          deltaEl.style.display = deltaText ? '' : 'none';
+        }
+        const { tx, ty } = getFlashDeltaWorld();
+        const rect = wrap.getBoundingClientRect();
+        const r = Math.min(rect.width, rect.height) * 0.28;
+        const ang = Math.atan2(ty, tx);
+        const ox = Math.cos(ang) * r;
+        const oy = Math.sin(ang) * r;
+        if (core) {
+          core.style.setProperty('--flash-ox', ox + 'px');
+          core.style.setProperty('--flash-oy', oy + 'px');
+        }
+        el.classList.remove('action-flash-anim');
+        void el.offsetWidth;
+        el.classList.add('visible', 'action-flash-anim');
+        if (actionFlashTimer) clearTimeout(actionFlashTimer);
+        actionFlashTimer = setTimeout(() => {
+          el.classList.remove('visible', 'action-flash-anim');
+        }, 980);
+      }
+      function showAffinityDeltaFlash(affinityDelta) {
+        const wrap = document.querySelector('.molecule-view-area');
+        const el = document.getElementById('action-flash');
+        if (!wrap || !el) return;
+        const core = el.querySelector('.action-flash-core');
+        const flower = el.querySelector('.action-flash-flower');
+        const label = el.querySelector('.action-flash-label');
+        const deltaEl = el.querySelector('.action-flash-delta');
+        const d = Number(affinityDelta || 0);
+        const pos = d > 0.0001;
+        const neg = d < -0.0001;
+        const col = pos ? '#26e078' : (neg ? '#d08070' : '#8a8a92');
+        const actionName = (lastActionSentIndex >= 0 && lastActionSentIndex < ACTION_LABELS.length)
+          ? ACTION_LABELS[lastActionSentIndex]
+          : 'Action';
+        if (flower) flower.style.color = col;
+        if (label) {
+          label.textContent = actionName;
+          label.style.color = col;
+        }
+        if (deltaEl) {
+          const deltaText = formatAffinityMultiplier(d);
+          deltaEl.textContent = deltaText;
+          deltaEl.classList.toggle('positive', pos);
+          deltaEl.classList.toggle('negative', neg);
+          deltaEl.style.display = deltaText ? '' : 'none';
+        }
+        const { tx, ty } = getFlashDeltaWorld();
+        const rect = wrap.getBoundingClientRect();
+        const r = Math.min(rect.width, rect.height) * 0.28;
+        const ang = Math.atan2(ty, tx);
+        const ox = Math.cos(ang) * r;
+        const oy = Math.sin(ang) * r;
+        if (core) {
+          core.style.setProperty('--flash-ox', ox + 'px');
+          core.style.setProperty('--flash-oy', oy + 'px');
+        }
+        el.classList.remove('action-flash-anim');
+        void el.offsetWidth;
+        el.classList.add('visible', 'action-flash-anim');
+        if (actionFlashTimer) clearTimeout(actionFlashTimer);
+        actionFlashTimer = setTimeout(() => {
+          el.classList.remove('visible', 'action-flash-anim');
+        }, 980);
+      }
+
+      function stopMoleculeLoop() {
+        if (moleculeRaf != null) {
+          cancelAnimationFrame(moleculeRaf);
+          moleculeRaf = null;
+        }
+      }
+      function startMoleculeLoop() {
+        stopMoleculeLoop();
+        lastMoleculeTime = performance.now();
+        moleculeRaf = requestAnimationFrame(tickMolecule);
+      }
+      function tickMolecule(now) {
+        moleculeRaf = requestAnimationFrame(tickMolecule);
+        if (!document.getElementById('controller-screen').classList.contains('active')) return;
+        if (!isPlayTabActive()) {
+          lastMoleculeTime = now;
+          return;
+        }
+        let dt = (now - lastMoleculeTime) / 1000;
+        lastMoleculeTime = now;
+        if (!Number.isFinite(dt) || dt <= 0) dt = 1 / 60;
+        if (dt > 0.1) dt = 0.1;
+        drawMolecule(dt);
+        updateMoleculeTargetBanner();
+        updateResourceMeters();
+      }
+
+      function drawMolecule(dt) {
+        const svg = document.getElementById('molecule-view');
+        if (!svg) return;
+        clearSvg(svg);
+        window.__molHitTest = [];
+
+        if (selectedPlayer === null) return;
+        const myColor = PLAYER_COLORS[selectedPlayer] || '#cccccc';
+        const vb = VF * 2;
+        attr(svg, 'viewBox', (-VF) + ' ' + (-VF) + ' ' + vb + ' ' + vb);
+        if (!Number.isFinite(dt) || dt <= 0) dt = 1 / 60;
+
+        const layer = setupMoleculeClip(svg);
+
+        if (!latestGameState || !latestGameState.players || latestGameState.players.length === 0) {
+          drawCircle(layer, 0, 0, PLAYER_R_VF, myColor, '#10101a', 0.05);
+          drawCircle(svg, 0, 0, CLIP_R, 'none', 'rgba(26,26,30,0.32)', 0.052);
+          return;
+        }
+
+        const me = latestGameState.players.find(p => p.id === selectedPlayer);
+        if (!me) {
+          drawCircle(svg, 0, 0, CLIP_R, 'none', 'rgba(26,26,30,0.32)', 0.052);
+          return;
+        }
+
+        const px = me.x || 0;
+        const py = me.y || 0;
+        const personas = latestGameState.personas || [];
+        const bonds = (latestGameState.bonds || []).filter(b => b.playerId === selectedPlayer);
+
+        const placed = bondPlacementsFromGame(bonds, personas, me, dt);
+        const bondedIds = new Set(placed.map(p => p.id));
+        const molHits = [];
+        const partnerGlyphEm = zodiacFontSizeForRadius(PARTNER_R_VF);
+        const zodiacY = zodiacNudgeYDown(svg);
+
+        latestGameState.players.forEach(p => {
+          if (p.id === selectedPlayer) return;
+          const pos = idealPartnerPosFromWorld({ x: p.x || 0, y: p.y || 0 }, px, py);
+          const col = PLAYER_COLORS[p.id] || '#888888';
+          drawCircle(layer, pos.x, pos.y, OTHER_PLAYER_R, hexToRgba(col, 0.38), 'rgba(26,26,30,0.4)', 0.04);
+        });
+
+        const selRingCol = PLAYER_COLORS[selectedPlayer] || '#10101a';
+        function drawSelectionHalo(parent, x, y, innerR) {
+          const gap = Math.max(0.08, innerR * 0.26);
+          drawCircle(parent, x, y, innerR + gap, 'none', selRingCol, 0.055);
+        }
+
+        const courtId = latestGameState.courtingPersonaId;
+        if (typeof courtId === 'number' && courtId >= 0 && !bondedIds.has(courtId)
+          && typeof latestGameState.courtingPersonaX === 'number') {
+          const cpos = idealPartnerPosFromWorld({
+            x: latestGameState.courtingPersonaX,
+            y: latestGameState.courtingPersonaY || 0
+          }, px, py);
+          const cg = latestGameState.courtingPersonaGlyph || '\u2022';
+          const strangerSummary = bondSummaryForPersona(courtId);
+          const strangerCols = bandColorsFromSummary(strangerSummary);
+          const strangerGlyphFs = zodiacFontSizeForRadius(COURT_STRANGER_R);
+          if (strangerCols.length >= 2) {
+            drawBandedDisc(layer, cpos.x, cpos.y, COURT_STRANGER_R, strangerCols, '#10101a', 0.05);
+          } else {
+            drawCircle(layer, cpos.x, cpos.y, COURT_STRANGER_R, '#ffffff', '#10101a', 0.05);
+          }
+          drawBondHeartsAbove(layer, cpos.x, cpos.y, COURT_STRANGER_R, strangerGlyphFs, strangerSummary);
+          drawText(layer, cpos.x, cpos.y + zodiacY, cg, strangerGlyphFs, '#10101a');
+          if (phoneSelectedPersonaId === courtId) drawSelectionHalo(layer, cpos.x, cpos.y, COURT_STRANGER_R);
+          molHits.push({ id: courtId, x: cpos.x, y: cpos.y, r: COURT_STRANGER_R });
+        }
+
+        const shareList = reachableSharePersonas(me, personas, courtId, bondedIds);
+        const shareGlyphEm = zodiacFontSizeForRadius(SHARE_PARTNER_R);
+        for (let si = 0; si < shareList.length; si++) {
+          const per = shareList[si];
+          const sp = idealPartnerPosFromWorld(per, px, py);
+          const g = per.glyph || '\u2022';
+          const shareSummary = bondSummaryForPersona(per.id);
+          const shareCols = bandColorsFromSummary(shareSummary);
+          if (shareCols.length >= 2) {
+            drawBandedDisc(layer, sp.x, sp.y, SHARE_PARTNER_R, shareCols, '#10101a', 0.055);
+          } else if (shareCols.length === 1) {
+            drawCircle(layer, sp.x, sp.y, SHARE_PARTNER_R, hexToRgba(shareCols[0], 0.88), '#10101a', 0.055);
+          } else {
+            drawCircle(layer, sp.x, sp.y, SHARE_PARTNER_R,
+              'rgba(248,250,255,0.94)', 'rgba(70,100,190,0.78)', 0.055);
+          }
+          drawBondHeartsAbove(layer, sp.x, sp.y, SHARE_PARTNER_R, shareGlyphEm, shareSummary);
+          drawText(layer, sp.x, sp.y + zodiacY, g, shareGlyphEm, '#10101a');
+          if (phoneSelectedPersonaId === per.id) drawSelectionHalo(layer, sp.x, sp.y, SHARE_PARTNER_R);
+          molHits.push({ id: per.id, x: sp.x, y: sp.y, r: SHARE_PARTNER_R });
+        }
+
+        const hairW = 0.018;
+        const hairCol = '#141418';
+        for (const t of placed) {
+          const len = Math.hypot(t.x, t.y);
+          if (len < 1e-4) continue;
+          const ux = t.x / len;
+          const uy = t.y / len;
+          const x1 = ux * PLAYER_R_VF;
+          const y1 = uy * PLAYER_R_VF;
+          const x2 = t.x - ux * PARTNER_R_VF;
+          const y2 = t.y - uy * PARTNER_R_VF;
+          if ((x2 - x1) * ux + (y2 - y1) * uy > 0.03)
+            drawLine(layer, x1, y1, x2, y2, hairCol, hairW, 'butt');
+        }
+
+        for (const t of placed) {
+          const mySummary = bondSummaryForPersona(t.id);
+          const myCols = bandColorsFromSummary(mySummary);
+          if (myCols.length >= 2) {
+            drawBandedDisc(layer, t.x, t.y, PARTNER_R_VF, myCols, '#10101a', 0.05);
+          } else if (myCols.length === 1) {
+            drawCircle(layer, t.x, t.y, PARTNER_R_VF, myCols[0], '#10101a', 0.05);
+          } else {
+            drawCircle(layer, t.x, t.y, PARTNER_R_VF, myColor, '#10101a', 0.05);
+          }
+          drawBondHeartsAbove(layer, t.x, t.y, PARTNER_R_VF, partnerGlyphEm, mySummary);
+          drawText(layer, t.x, t.y + zodiacY, t.glyph, partnerGlyphEm, '#10101a');
+          if (phoneSelectedPersonaId === t.id) drawSelectionHalo(layer, t.x, t.y, PARTNER_R_VF);
+          molHits.push({ id: t.id, x: t.x, y: t.y, r: PARTNER_R_VF });
+        }
+
+        drawCircle(layer, 0, 0, PLAYER_R_VF, myColor, '#10101a', 0.055);
+        drawCircle(svg, 0, 0, CLIP_R, 'none', 'rgba(26,26,30,0.32)', 0.052);
+        window.__molHitTest = molHits;
+      }
+
+      function updateMoleculeTargetBanner() {
+        const banner = document.getElementById('molecule-target-banner');
+        const cap = document.getElementById('mtb-caption');
+        const countEl = document.getElementById('mtb-actions-count');
+        if (!banner || !cap || !countEl) return;
+        if (selectedPlayer === null || !document.getElementById('controller-screen').classList.contains('active')) {
+          countEl.textContent = '-/-';
+          return;
+        }
+        banner.style.setProperty('--banner-accent', PLAYER_COLORS[selectedPlayer] || '#888888');
+        if (!latestGameState || !latestGameState.players || !latestGameState.players.length) {
+          countEl.textContent = '-/-';
+          return;
+        }
+        const me = latestGameState.players.find(p => p.id === selectedPlayer);
+        if (!me) {
+          countEl.textContent = '-/-';
+          return;
+        }
+        const max = (typeof latestGameState.actionsPerTurn === 'number' && latestGameState.actionsPerTurn > 0)
+          ? latestGameState.actionsPerTurn : (typeof me.actionsRemaining === 'number' ? me.actionsRemaining : 0);
+        const now = (typeof me.actionsRemaining === 'number') ? me.actionsRemaining : 0;
+        countEl.textContent = now + '/' + max;
+        countEl.classList.toggle('mtb-actions-empty', now <= 0);
+      }
+
+      function svgClientToVb(svg, clientX, clientY) {
+        if (!svg.createSVGPoint) return null;
+        const pt = svg.createSVGPoint();
+        pt.x = clientX;
+        pt.y = clientY;
+        const ctm = svg.getScreenCTM();
+        if (!ctm) return null;
+        return pt.matrixTransform(ctm.inverse());
+      }
+
+      function sendTargetToServer(personaId) {
+        if (selectedPlayer === null) return;
+        const msg = JSON.stringify({ type: 'target', playerIndex: selectedPlayer, personaId });
+        if (ws && ws.readyState === WebSocket.OPEN) ws.send(msg);
+        else fetch('/input', { method: 'POST', headers: jsonPostHeaders(), body: msg }).catch(() => { });
+      }
+
+      function findMoleculeHit(clientX, clientY) {
+        const svg = document.getElementById('molecule-view');
+        if (!svg || selectedPlayer === null) return null;
+        if (!document.getElementById('controller-screen').classList.contains('active')) return null;
+        const vb = svgClientToVb(svg, clientX, clientY);
+        if (!vb) return null;
+        const hits = window.__molHitTest || [];
+        let best = null;
+        let bestD = 0.55;
+        for (let i = 0; i < hits.length; i++) {
+          const h = hits[i];
+          const d = Math.hypot(vb.x - h.x, vb.y - h.y);
+          const maxPick = h.r + 0.16;
+          if (d <= maxPick && d < bestD) { bestD = d; best = h; }
+        }
+        return best;
+      }
+
+      function onMoleculePointerPick(clientX, clientY) {
+        const best = findMoleculeHit(clientX, clientY);
+        if (!best) return;
+        const nextId = best.id === phoneSelectedPersonaId ? -1 : best.id;
+        phoneSelectedPersonaId = nextId;
+        if (window.SFX) (nextId >= 0 ? window.SFX.targetOn() : window.SFX.targetOff());
+        sendTargetToServer(nextId);
+      }
+
+      function isBondedToMe(personaId) {
+        if (!latestGameState || selectedPlayer === null) return false;
+        return (latestGameState.bonds || []).some(b =>
+          b.playerId === selectedPlayer && b.personaId === personaId);
+      }
+
+      function setupMoleculeTap() {
+        const svg = document.getElementById('molecule-view');
+        if (!svg || svg.dataset.molTapBound) return;
+        svg.dataset.molTapBound = '1';
+        let tapStart = null;
+
+        svg.addEventListener('touchstart', e => {
+          if (e.touches.length !== 1) return;
+          const t = e.touches[0];
+          tapStart = { x: t.clientX, y: t.clientY };
+        }, { passive: true });
+
+        svg.addEventListener('touchend', e => {
+          if (!tapStart) return;
+          const t = e.changedTouches[0];
+          const moved = Math.hypot(t.clientX - tapStart.x, t.clientY - tapStart.y) > 16;
+          tapStart = null;
+          if (moved) return;
+          e.preventDefault();
+          e.stopPropagation();
+          onMoleculePointerPick(t.clientX, t.clientY);
+        }, { passive: false });
+
+        svg.addEventListener('touchcancel', () => { tapStart = null; }, { passive: true });
+
+        svg.addEventListener('click', e => {
+          if (e.pointerType === 'touch') return;
+          e.preventDefault();
+          onMoleculePointerPick(e.clientX, e.clientY);
+        });
+      }
+
+      let sfxPrimed = false;
+      let lastSfxEventKey = '';
+      function maybePlayEventSfx(state) {
+        if (!window.SFX || !state) return;
+        if (!sfxPrimed) { sfxPrimed = true; return; }
+        const ev = state.eventType || '';
+        const key = ev + '|' + (state.eventPlayerIndex | 0) + '|' + (state.eventPersonaIndex | 0) + '|' + (state.sentAt | 0);
+        if (key === lastSfxEventKey) return;
+        if (ev === 'state_update' || ev === '') return;
+        lastSfxEventKey = key;
+        const me = (selectedPlayer == null) ? -1 : selectedPlayer;
+        const actor = (typeof state.eventPlayerIndex === 'number') ? state.eventPlayerIndex : -1;
+        switch (ev) {
+          case 'round_started': window.SFX.roundStart(); break;
+          case 'persona_arrived': window.SFX.personaArrive(); break;
+          case 'bond_created': if (actor === me || actor < 0) window.SFX.bondCreated(); break;
+          case 'bond_broken': if (actor === me || actor < 0) window.SFX.bondBroken(); break;
+          case 'kiss': window.SFX.kiss(); break;
+          case 'action_applied': {
+            if (actor !== me) break;
+            const d = Number(state.eventAffinityDelta || 0);
+            if (d > 0.0001) window.SFX.affinityUp();
+            else if (d < -0.0001) window.SFX.affinityDown();
+            showAffinityDeltaFlash(d);
+            break;
+          }
+          case 'game_over': window.SFX.gameOver(); break;
+          default: break;
+        }
+      }
+
+      function connectWs() {
+        if (ws && ws.readyState === WebSocket.OPEN) return;
+        wsReady = false;
+        const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+        ws = new WebSocket(proto + '//' + location.host + '/ws');
+        ws.onopen = () => {
+          sfxPrimed = false;
+          lastSfxEventKey = '';
+          if (selectedPlayer !== null && phoneSelectedPersonaId >= 0
+            && document.getElementById('controller-screen').classList.contains('active')) {
+            sendTargetToServer(phoneSelectedPersonaId);
+          }
+        };
+        ws.onmessage = (e) => {
+          try {
+            const m = JSON.parse(e.data);
+            if (m.type === 'claimed') {
+              claimed = new Set(m.claimed || []);
+              claimedNames = Array.isArray(m.names) ? m.names : claimedNames;
+              wsReady = true;
+              updateClaimedUI();
+              const cArr = m.claimed || [];
+              if (cArr.length === 0 && metricsPlayerIndex !== null) {
+                clearAllDirs();
+                selectedPlayer = null;
+                selectedPlayerName = '';
+                const ctrl = document.getElementById('controller-screen');
+                const sel = document.getElementById('select-screen');
+                if (ctrl) ctrl.classList.remove('active');
+                if (sel) sel.classList.add('active');
+                phonePartnerMotion.clear();
+                phoneSelectedPersonaId = -1;
+              }
+            }
+            if (m.type === 'select_ok') {
+              selectedPlayer = m.playerIndex;
+              selectedPlayerName = sanitizePlayerName(m.name || '');
+              if (selectedPlayer >= 0 && selectedPlayer < claimedNames.length) claimedNames[selectedPlayer] = selectedPlayerName;
+              goToController();
+            }
+            if (m.type === 'select_failed') {
+              if (window.SFX) window.SFX.selectFail();
+              showTaken(m.playerIndex);
+              if (m.reason === 'name_required' && typeof m.playerIndex === 'number') {
+                openNameModal(m.playerIndex, claimedNames[m.playerIndex] || '');
+              }
+            }
+            if (m.type === 'game_state') {
+              latestGameState = m;
+              if (m.showInstructionsModal === true) showInstructionsOverlay();
+              else if (m.showInstructionsModal === false || m.eventType === 'instructions_done') hideInstructionsOverlay();
+              const radarOn = document.getElementById('controller-tab-radar');
+              if (radarOn && radarOn.classList.contains('active')) redrawSessionRadar();
+              maybePlayEventSfx(m);
+              if (m.eventType === 'game_over') {
+                if (selectedPlayer !== null && metricsPlayerIndex === null)
+                  metricsPlayerIndex = selectedPlayer;
+                setTimeout(() => { showGameEndOverlay(); }, 480);
+              }
+            }
+          } catch (_) { }
+        };
+        ws.onclose = () => {
+          ws = null; wsReady = false; updateClaimedUI();
+          if (document.getElementById('controller-screen').classList.contains('active')) setTimeout(connectWs, 1500);
+        };
+        ws.onerror = () => { ws = null; wsReady = false; updateClaimedUI(); };
+      }
+
+      function updateClaimedUI() {
+        document.querySelectorAll('.quadrant-card').forEach(btn => {
+          const p = parseInt(btn.dataset.player, 10);
+          const taken = claimed.has(p) && selectedPlayer !== p;
+          btn.disabled = !wsReady || taken;
+          btn.classList.toggle('claimed', taken);
+        });
+      }
+
+      function applyControllerTheme() {
+        const screen = document.getElementById('controller-screen');
+        if (selectedPlayer === null) return;
+        screen.style.setProperty('--player-color', PLAYER_COLORS[selectedPlayer]);
+        screen.dataset.player = selectedPlayer;
+      }
+
+      function goToController() {
+        document.getElementById('select-screen').classList.remove('active');
+        document.getElementById('controller-screen').classList.add('active');
+        applyControllerTheme();
+        phonePartnerMotion.clear();
+        phoneSelectedPersonaId = -1;
+        sendTargetToServer(-1);
+        setupMoleculeTap();
+        setControllerTab('play');
+        startMoleculeLoop();
+      }
+
+      function showTaken(p) {
+        const btn = document.querySelector(`.quadrant-card[data-player="${p}"]`);
+        if (!btn) return;
+        btn.classList.add('flash-taken');
+        setTimeout(() => btn.classList.remove('flash-taken'), 600);
+      }
+
+      function sendNow(type, key, state) {
+        if (selectedPlayer === null) return;
+        const msg = JSON.stringify({ type, playerIndex: selectedPlayer, key, state });
+        if (ws && ws.readyState === WebSocket.OPEN) { ws.send(msg); return; }
+        fetch('/input', { method: 'POST', headers: jsonPostHeaders(), body: msg }).catch(() => { });
+      }
+      function sendTap(type, key) {
+        if (selectedPlayer === null) return;
+        if (type === 'action') {
+          const k = Number(key);
+          if (Number.isFinite(k)) lastActionSentIndex = k | 0;
+        }
+        const msg = JSON.stringify({
+          type,
+          playerIndex: selectedPlayer,
+          key,
+          personaId: phoneSelectedPersonaId
+        });
+        if (ws && ws.readyState === WebSocket.OPEN) { ws.send(msg); return; }
+        fetch('/tap', { method: 'POST', headers: jsonPostHeaders(), body: msg }).catch(() => { });
+      }
+
+      function sendInstructionsAck() {
+        if (selectedPlayer === null) return;
+        const msg = JSON.stringify({ type: 'instructions_ack', playerIndex: selectedPlayer });
+        if (ws && ws.readyState === WebSocket.OPEN) { ws.send(msg); return; }
+        fetch('/input', { method: 'POST', headers: jsonPostHeaders(), body: msg }).catch(() => { });
+      }
+
+      function showInstructionsOverlay() {
+        const el = document.getElementById('instructions-overlay');
+        if (!el) return;
+        el.classList.add('active');
+        el.setAttribute('aria-hidden', 'false');
+      }
+
+      function hideInstructionsOverlay() {
+        const el = document.getElementById('instructions-overlay');
+        if (!el) return;
+        el.classList.remove('active');
+        el.setAttribute('aria-hidden', 'true');
+      }
+
+      function dismissInstructionsModal() {
+        sendInstructionsAck();
+        hideInstructionsOverlay();
+      }
+
+      let activeDirs = { up: false, down: false, left: false, right: false };
+      function setDir(dir, on) {
+        if (activeDirs[dir] === on) return;
+        activeDirs[dir] = on;
+        sendNow('move', dir, on ? 'down' : 'up');
+      }
+      function clearAllDirs() {
+        if (activeDirs.up) { activeDirs.up = false; sendNow('move', 'up', 'up'); }
+        if (activeDirs.down) { activeDirs.down = false; sendNow('move', 'down', 'up'); }
+        if (activeDirs.left) { activeDirs.left = false; sendNow('move', 'left', 'up'); }
+        if (activeDirs.right) { activeDirs.right = false; sendNow('move', 'right', 'up'); }
+      }
+
+      const DEADZONE = 0.25;
+      const STIFFNESS = 0.55;
+      const joystick = document.getElementById('joystick');
+      const thumb = document.getElementById('joystick-thumb');
+
+      function joyMetrics() {
+        const rect = joystick.getBoundingClientRect();
+        const r = Math.max(1, Math.min(rect.width, rect.height) / 2);
+        const thumbR = Math.max(18, r * 0.42);
+        return { rect, r, thumbR };
+      }
+
+      function getPos(e) {
+        const m = joyMetrics();
+        const cx = m.rect.left + m.rect.width / 2;
+        const cy = m.rect.top + m.rect.height / 2;
+        const t = e.touches && e.touches.length ? e.touches[0] : e;
+        return { x: t.clientX - cx, y: t.clientY - cy };
+      }
+
+      function updateFromPos(x, y) {
+        const m = joyMetrics();
+        const maxDist = Math.max(1, m.r - m.thumbR);
+        const len = Math.sqrt(x * x + y * y);
+        if (len < 1) {
+          clearAllDirs();
+          thumb.style.transform = 'translate(0,0)';
+          thumb.classList.remove('active');
+          return;
+        }
+        const scale = len > maxDist ? maxDist / len : 1;
+        const rawNx = x * scale;
+        const rawNy = y * scale;
+        const nx = rawNx * STIFFNESS;
+        const ny = rawNy * STIFFNESS;
+        thumb.style.transform = `translate(${nx}px,${ny}px)`;
+        thumb.classList.add('active');
+        const ux = rawNx / m.r;
+        const uy = -rawNy / m.r;
+        setDir('up', uy > DEADZONE);
+        setDir('down', uy < -DEADZONE);
+        setDir('left', ux < -DEADZONE);
+        setDir('right', ux > DEADZONE);
+      }
+
+      function onStart(e) { e.preventDefault(); const p = getPos(e); updateFromPos(p.x, p.y); }
+      function onMove(e) { e.preventDefault(); const p = getPos(e); updateFromPos(p.x, p.y); }
+      function onEnd(e) { e.preventDefault(); thumb.classList.remove('active'); thumb.style.transform = 'translate(0,0)'; clearAllDirs(); }
+      function handleStart(e) { e.preventDefault(); e.stopPropagation(); onStart(e); }
+      function handleMove(e) { e.preventDefault(); e.stopPropagation(); onMove(e); }
+      function handleEnd(e) { e.preventDefault(); e.stopPropagation(); onEnd(e); }
+      joystick.addEventListener('touchstart', handleStart, { passive: false, capture: true });
+      joystick.addEventListener('touchmove', handleMove, { passive: false, capture: true });
+      joystick.addEventListener('touchend', handleEnd, { passive: false, capture: true });
+      joystick.addEventListener('touchcancel', handleEnd, { passive: false, capture: true });
+      joystick.addEventListener('mousedown', function md(e) {
+        onStart(e);
+        function mm(ev) { ev.preventDefault(); onMove(ev); }
+        function mu(ev) { onEnd(ev); document.removeEventListener('mousemove', mm); document.removeEventListener('mouseup', mu); }
+        document.addEventListener('mousemove', mm);
+        document.addEventListener('mouseup', mu);
+      });
+
+      function isLandscapeOrientation() {
+        var landscape = false;
+        try {
+          landscape = window.matchMedia('(orientation: landscape)').matches;
+        } catch (e) {
+          landscape = window.innerWidth > window.innerHeight;
+        }
+        if (!landscape) return false;
+        var w = window.innerWidth;
+        var h = window.innerHeight;
+        var shortSide = Math.min(w, h);
+        var touchLike = ('ontouchstart' in window) || ((navigator.maxTouchPoints || 0) > 0);
+        try {
+          if (window.matchMedia('(pointer: coarse)').matches) touchLike = true;
+        } catch (e) { /* ignore */ }
+        if (shortSide < 600) return true;
+        if (touchLike && shortSide < 900) return true;
+        return false;
+      }
+
+      function updateOrientationPrompt() {
+        var el = document.getElementById('orientation-prompt');
+        if (!el) return;
+        var show = isLandscapeOrientation();
+        el.classList.toggle('active', show);
+        el.setAttribute('aria-hidden', show ? 'false' : 'true');
+      }
+
+      function setupOrientationPrompt() {
+        updateOrientationPrompt();
+        window.addEventListener('resize', updateOrientationPrompt);
+        window.addEventListener('orientationchange', function () {
+          setTimeout(updateOrientationPrompt, 200);
+        });
+        if (window.screen && window.screen.orientation && window.screen.orientation.addEventListener) {
+          try {
+            window.screen.orientation.addEventListener('change', updateOrientationPrompt);
+          } catch (e) { /* ignore */ }
+        }
+      }
+
+      setupOrientationPrompt();
+
+      connectWs();
+      updateClaimedUI();
+      setupMoleculeTap();
+
+      document.querySelectorAll('.controller-tab').forEach(tabBtn => {
+        tabBtn.addEventListener('click', () => {
+          if (window.SFX) window.SFX.tab();
+          setControllerTab(tabBtn.dataset.tab || 'play');
+        });
+      });
+      document.getElementById('game-end-dismiss')?.addEventListener('click', () => dismissGameEndOverlay());
+      document.getElementById('instructions-dismiss')?.addEventListener('click', () => dismissInstructionsModal());
+
+      document.querySelectorAll('.quadrant-card').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (btn.disabled) {
+            if (window.SFX) window.SFX.selectFail();
+            return;
+          }
+          if (window.SFX) window.SFX.select();
+          const p = parseInt(btn.dataset.player, 10);
+          openNameModal(p, claimedNames[p] || '');
+        });
+      });
+
+      document.getElementById('name-cancel')?.addEventListener('click', () => {
+        pendingSelectPlayer = null;
+        closeNameModal();
+      });
+      document.getElementById('name-ok')?.addEventListener('click', () => submitNameAndConnect());
+      document.getElementById('name-input')?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          submitNameAndConnect();
+        }
+      });
+
+      document.querySelectorAll('.action-btn').forEach(btn => {
+        const action = parseInt(btn.dataset.action, 10);
+        let suppressClick = false;
+        const fire = () => {
+          if (window.SFX) window.SFX.action(action);
+          showActionFlash(action);
+          sendTap('action', action);
+        };
+        const handler = () => {
+          if (action === 5) {
+            const pid = phoneSelectedPersonaId;
+            if (pid < 0 || !isPersonaBondedToSelectedPlayer(pid)) return;
+            if (window.SFX) window.SFX.confirmOpen();
+            openBreakupConfirm(() => {
+              if (window.SFX) window.SFX.action(5);
+              showActionFlash(5);
+              sendTap('action', 5);
+            });
+            return;
+          }
+          fire();
+        };
+        btn.addEventListener('touchend', e => { e.preventDefault(); suppressClick = true; handler(); setTimeout(() => { suppressClick = false; }, 350); }, { passive: false });
+        btn.addEventListener('click', e => { e.preventDefault(); if (suppressClick) return; handler(); });
+      });
+
+      document.getElementById('breakup-cancel')?.addEventListener('click', () => {
+        if (window.SFX) window.SFX.confirmCancel();
+        closeBreakupConfirm();
+      });
+      document.getElementById('breakup-ok')?.addEventListener('click', () => confirmBreakup());
+    })();
+  </script>
+</body>
+
+</html>

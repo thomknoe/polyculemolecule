@@ -1,0 +1,15 @@
+{
+  "name": "polyamory-web-controller",
+  "version": "1.0.0",
+  "description": "Web-based mobile controller for Polyamory Prototype - hosts local server, mobile devices connect as virtual controllers",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "@ngrok/ngrok": "^1.7.0",
+    "express": "^4.18.2",
+    "ws": "^8.14.2"
+  }
+}
