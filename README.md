@@ -6,11 +6,11 @@ Polycule Molecule is a multiplayer relational building game where you court pote
 
 > **Platform:** macOS only. Windows and Linux ports are planned for a future release.
 
-## Trailer
+## Videos
 
 [![Watch the trailer](https://utfs.io/f/nGnSqDveMsqxVTvkYd6rJe0alCDndF9sm64f7ik1oqbuM5UO)](https://www.youtube.com/watch?v=6UW5uM0o4Oc)
 
-[![Gameplay video](screenshots/gameplay-thumbnail.png)](https://youtu.be/your-gameplay-link-here)
+[![Gameplay video](https://utfs.io/f/nGnSqDveMsqxmGTrNVjRJyeGzNLsqiK3drCnoHp7jO1acDgB)](https://www.youtube.com/watch?v=TQAZHHM-dMo)
 
 ---
 
