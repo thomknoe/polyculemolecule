@@ -8,7 +8,7 @@ Polycule Molecule is a multiplayer relational building game where you court pote
 
 ## Trailer
 
-[![Watch the trailer](screenshots/trailer-thumbnail.png)](https://youtu.be/6UW5uM0o4Oc?si=vI0phngD3nayiIOm)
+[![Watch the trailer](https://utfs.io/f/nGnSqDveMsqxVTvkYd6rJe0alCDndF9sm64f7ik1oqbuM5UO)](https://www.youtube.com/watch?v=6UW5uM0o4Oc)
 
 ---
 
@@ -157,7 +157,7 @@ _Polycule Molecule_ is a design research prototype created for DESIGN 6197: Game
 > **Root theme:** _Meaning-Making in an Opaque, Scarcity-Driven Relational Economy_
 > Players impose narrative, identity, and strategy onto limited information, randomized symbols, and simultaneous action.
 
-[![Playtesting session](screenshots/playtest-thumbnail.png)](https://youtu.be/your-playtest-video-link-here)
+[![Playtesting session](https://img.youtube.com/vi/h4BhAhwitGY/maxresdefault.jpg)](https://www.youtube.com/watch?v=h4BhAhwitGY)
 
 ---
 
