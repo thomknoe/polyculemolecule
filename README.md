@@ -6,8 +6,6 @@ Polycule Molecule is a multiplayer relational building game where you court pote
 
 > **Platform:** macOS only. Windows and Linux ports are planned for a future release.
 
----
-
 ## Screenshots
 
 ![Title screen and QR controller setup](screenshots/01-title-screen.png)
@@ -44,8 +42,6 @@ Steps:
 
 > If text renders as boxes, go to `Edit → Project Settings → TextMeshPro → Settings` and set `Assets/Fonts/unifont SDF` as the default font asset.
 
----
-
 ## How to Play
 
 **The Field**
@@ -55,8 +51,6 @@ Four players — **The Affirmer**, **The Steward**, **The Gifter**, and **The An
 **Controls**
 
 All input is handled through the phone controller. At the title screen a QR code appears — scan it on your phone to claim a player slot. The phone acts as a joystick and action pad: move with the on-screen thumbstick and tap love language buttons to interact with nearby personas.
-
----
 
 ## The Five Love Languages
 
@@ -72,8 +66,6 @@ Each action spends one unit of the matching resource. Resources replenish each r
 
 A sixth action, **Break up**, ends an existing bond with a persona.
 
----
-
 ## Player Archetypes
 
 Each archetype starts with a different distribution of love language resources, shaping their natural approach. The tension — your strongest resource may not match a persona's hidden propensities — is the core strategic dilemma.
@@ -85,13 +77,9 @@ Each archetype starts with a different distribution of love language resources, 
 | **The Gifter**   | Receiving gifts      |
 | **The Anchor**   | Quality time         |
 
----
-
 ## Round Structure (12 rounds)
 
-Each round is marked by a zodiac glyph, one per round in order:
-
-♈︎ ♉︎ ♊︎ ♋︎ ♌︎ ♍︎ ♎︎ ♏︎ ♐︎ ♑︎ ♒︎ ♓︎
+Each round is marked by a zodiac glyph, one per round in order: ♈︎ ♉︎ ♊︎ ♋︎ ♌︎ ♍︎ ♎︎ ♏︎ ♐︎ ♑︎ ♒︎ ♓︎
 
 1. **Spawn** — A persona arrives with a name, two traits, a mood, a story, and hidden love-language propensities (ranging from strongly positive to negative)
 2. **Courting** — All players move freely; actions fire when in proximity. Each player has **10 actions per turn**
@@ -99,8 +87,6 @@ Each round is marked by a zodiac glyph, one per round in order:
 4. **Negotiation** — A brief pause to discuss the round, inspect revealed propensities, and plan next moves
 
 After 12 rounds the end-game dashboard shows bond counts, network typology, and cumulative affinity per player-persona pair.
-
----
 
 ## Bonds & Network Typology
 
@@ -113,8 +99,6 @@ Bonds render as glowing edges between player nodes and persona nodes in a live s
 | Triad    | One persona bonded to two players              |
 | Quad     | One persona bonded to three or four players    |
 | Quad+    | Multiple shared connections across the network |
-
----
 
 ## Phone Controllers & Networking
 
@@ -155,13 +139,9 @@ NGROK_DOMAIN=yourname.ngrok-free.dev
 
 > The authtoken is available at [dashboard.ngrok.com/authtokens](https://dashboard.ngrok.com/authtokens). The `NGROK_EXE` path is almost always required on macOS since Unity spawns processes outside the shell environment and won't find binaries installed via Homebrew or nvm unless the path is explicit.
 
----
-
 ## Research Context
 
 _Polycule Molecule_ is a design research prototype created for DESIGN 6197: Games in Research at Cornell University. The game uses play as a method to model and interrogate polyamorous relational structures — examining how the five love languages, asymmetric emotional resources, and hidden compatibility shape the networks people build together. The emergent typologies (Couple, Triad, Quad, Polycule) are not predetermined outcomes but consequences of player choices, resource constraints, and chance.
-
----
 
 ## Thematic Analysis — Playtesting Findings
 
@@ -255,16 +235,3 @@ _How the rules shape — or frustrate — behavior_
 #### Attention Split (Phone vs. Screen)
 
 > "I kind of miss the… should my attention always be focused on my game controller on the phone or should it be focused on the main screen?"
-
----
-
-## Roadmap
-
-- Windows and Linux build support
-- Internet play without ngrok (hosted relay server)
-- Resource trading between players during negotiation
-- Environmental events affecting persona mood mid-round
-- Reclaim mechanic (spend resources to reduce affinity / dissolve a bond)
-- Animated background (starfield, grid, parallax)
-- Pixel-perfect camera with retro shader pass
-- Pairing mechanic: two players merge into a single bonded entity
