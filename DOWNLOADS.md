@@ -2,7 +2,7 @@
 
 The Unity project source and compiled macOS build are too large to store in this repository and are hosted on Google Drive.
 
-[Download Unity Files from Google Drive](https://drive.google.com/drive/folders/1JDWMN9-6NBDfXpaRcv5OmBn85xtFlfzq?usp=sharing)
+[Download Unity Files and App from Google Drive](https://drive.google.com/drive/folders/1JDWMN9-6NBDfXpaRcv5OmBn85xtFlfzq?usp=sharing)
 
 ---
 
