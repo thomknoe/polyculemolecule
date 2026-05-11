@@ -16,8 +16,6 @@ Polycule Molecule is a multiplayer relational building game where you court pote
 ![Negotiation phase and bond network overview](screenshots/04-negotiation-screen.png)
 ![End-game dashboard with network typology](screenshots/05-endgame-dashboard.png)
 
-> _Drop images into a `screenshots/` folder at the project root matching the filenames above._
-
 ---
 
 ## Getting Started
@@ -93,7 +91,7 @@ Each archetype starts with a different distribution of love language resources, 
 
 Each round is marked by a zodiac glyph, one per round in order:
 
-♈ ♉ ♊ ♋ ♌ ♍ ♎ ♏ ♐ ♑ ♒ ♓
+♈︎ ♉︎ ♊︎ ♋︎ ♌︎ ♍︎ ♎︎ ♏︎ ♐︎ ♑︎ ♒︎ ♓︎
 
 1. **Spawn** — A persona arrives with a name, two traits, a mood, a story, and hidden love-language propensities (ranging from strongly positive to negative)
 2. **Courting** — All players move freely; actions fire when in proximity. Each player has **10 actions per turn**
@@ -166,8 +164,6 @@ _Polycule Molecule_ is a design research prototype created for DESIGN 6197: Game
 ---
 
 ## Thematic Analysis — Playtesting Findings
-
-[![Playtesting session video](screenshots/video-thumbnail.png)](screenshots/video-thumbnail.png)
 
 > **Root theme:** _Meaning-Making in an Opaque, Scarcity-Driven Relational Economy_
 > Players impose narrative, identity, and strategy onto limited information, randomized symbols, and simultaneous action.
