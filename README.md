@@ -2,13 +2,15 @@
 
 # Polycule Molecule
 
-Polycule Molecule is a multiplayer relational building game where you court potential lovers using limited resources and form different bonds and connections with others. A top-down social simulation for 1–4 players exploring polyamorous relational dynamics through movement, proximity, and the five love languages. Players share a single screen while each using their own phone as a controller, and simultaneously court persona nodes that drift through a shared arena. Over 12 rounds, bonds form, decay, and branch into emergent network shapes.
+Polycule Molecule is a multiplayer relational building game where you court potential lovers using limited resources and form different bonds and connections with others. A top-down social simulation for 4 players exploring polyamorous relational dynamics through movement, proximity, and the five love languages. Players share a single screen while each using their own phone as a controller, and simultaneously court persona nodes that drift through a shared arena. Over each round, bonds form, decay, and branch into emergent network shapes.
 
 > **Platform:** macOS only. Windows and Linux ports are planned for a future release.
 
 ## Trailer
 
 [![Watch the trailer](https://utfs.io/f/nGnSqDveMsqxVTvkYd6rJe0alCDndF9sm64f7ik1oqbuM5UO)](https://www.youtube.com/watch?v=6UW5uM0o4Oc)
+
+[![Gameplay video](screenshots/gameplay-thumbnail.png)](https://youtu.be/your-gameplay-link-here)
 
 ---
 
@@ -24,7 +26,7 @@ Polycule Molecule is a multiplayer relational building game where you court pote
 
 ## Getting Started
 
-> **Downloads:** The compiled build and Unity project files are hosted on Google Drive due to their size — see [UNITY_FILES.md](UNITY_FILES.md).
+> **Downloads:** The compiled build and Unity project files are hosted on Google Drive due to their size.
 
 **Option A — Run the macOS build (no Unity required)**
 
@@ -83,7 +85,7 @@ Each archetype starts with a different distribution of love language resources, 
 | **The Gifter**   | Receiving gifts      |
 | **The Anchor**   | Quality time         |
 
-## Round Structure (12 rounds)
+## Round Structure
 
 Each round is marked by a zodiac glyph, one per round in order: ♈︎ ♉︎ ♊︎ ♋︎ ♌︎ ♍︎ ♎︎ ♏︎ ♐︎ ♑︎ ♒︎ ♓︎
 
@@ -157,9 +159,7 @@ _Polycule Molecule_ is a design research prototype created for DESIGN 6197: Game
 > **Root theme:** _Meaning-Making in an Opaque, Scarcity-Driven Relational Economy_
 > Players impose narrative, identity, and strategy onto limited information, randomized symbols, and simultaneous action.
 
-[![Playtesting session](https://img.youtube.com/vi/h4BhAhwitGY/maxresdefault.jpg)](https://www.youtube.com/watch?v=h4BhAhwitGY)
-
----
+[![Playtesting session](https://utfs.io/f/nGnSqDveMsqxO6P4sG0k5fKEn2LbBoPAuZ6XMTHDcNJ0QiG1)](https://www.youtube.com/watch?v=h4BhAhwitGY)
 
 ### Level 1 — Strategic Adaptation
 
