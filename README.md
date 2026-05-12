@@ -130,7 +130,7 @@ By default, the QR code encodes the host machine's local network IP. Players mus
 
 **Extended: Internet play via ngrok**
 
-For play across different networks, including public playtesting, the build supports tunneling through [ngrok](https://ngrok.com). When a tunnel is active, the QR code automatically encodes the public HTTPS URL instead of the LAN IP.
+For play across different networks, including public playtesting, the build supports tunneling through [ngrok](https://ngrok.com). When a tunnel is active, the QR code automatically encodes the public HTTPS URL instead of the LAN IP for the session.
 
 The game discovers an active tunnel through three fallback steps:
 
