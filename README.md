@@ -169,7 +169,7 @@ NGROK_DOMAIN=yourname.ngrok-free.dev
 
 _Polycule Molecule_ is a design research prototype created for DESIGN 6197: Games in Research at Cornell University. The game uses play as a method to model and interrogate polyamorous relational structures, examining how the five love languages, asymmetric emotional resources, and hidden compatibility shape the networks people build together. The emergent typologies (i.e., Couple, Triad, Quad, Polycule) arise from player choices, resource constraints, and chance. The player behavior also showcases this.
 
-## Thematic Analysis — Playtesting Findings
+## Thematic Analysis: Playtesting Findings
 
 > **Root theme:** _Meaning-Making in an Opaque, Scarcity-Driven Relational Economy_
 > Players impose narrative, identity, and strategy onto limited information, randomized symbols, and simultaneous action.
@@ -179,7 +179,7 @@ _Polycule Molecule_ is a design research prototype created for DESIGN 6197: Game
 
 ![Playtesting photo](screenshots/playtest.png)
 
-### Level 1 — Strategic Adaptation
+### Level 1: Strategic Adaptation
 
 _How players actually navigate the system_
 
@@ -203,7 +203,7 @@ _How players actually navigate the system_
 >
 > "I wasn't sure how to do the sharing."
 
-### Level 2 — Emotional & Relational Projection
+### Level 2: Emotional & Relational Projection
 
 _Players project personal and cultural meaning onto the game_
 
@@ -229,7 +229,7 @@ _Players project personal and cultural meaning onto the game_
 >
 > "You and I are attached." / "That's my wife."
 
-### Level 3 — Social & Cooperative Tension
+### Level 3: Social & Cooperative Tension
 
 _Group dynamics and the pull between competition and cooperation_
 
@@ -245,7 +245,7 @@ _Group dynamics and the pull between competition and cooperation_
 
 > "It kind of looks like the bisexual flag too." / "That's like perfect, that's like bisexuality right there."
 
-### Level 4 — System Friction & Pacing Effects
+### Level 4: System Friction & Pacing Effects
 
 _How the rules shape — or frustrate — behavior_
 
