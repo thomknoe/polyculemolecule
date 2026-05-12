@@ -70,7 +70,7 @@ You can also court personas who already belong to another player's polycule. Get
 
 **Actions:**
 
-**Affirm, Service, Gifts, Time,** and **Touch** each spend one resource and build affinity with your selected persona. **Break up** ends an existing bond; tap your bonded partner in the molecule view first, then press again to confirm. **Resource meters** along the bottom of your phone show how much of each love language you have left in the round.
+**Affirm, Service, Gifts, Time,** and **Touch** each spend one resource and build affinity with your selected persona. **Break up** ends an existing bond; tap your bonded partner in the molecule view first, then press again to confirm. **Resource meters** along the bottom show how much of each love language you have left in the round.
 
 ## The Five Love Languages
 
