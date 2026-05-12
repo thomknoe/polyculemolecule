@@ -72,22 +72,19 @@ You can also court personas who already belong to another player's polycule. Get
 
 **Actions:**
 
-- **Affirm, Service, Gifts, Time, Touch** each spend one resource and build affinity with your selected persona
-- **Break up** ends an existing bond; tap your bonded partner in the molecule view first, then press Break up to confirm
-
-**Resource meters** along the bottom of your phone show how much of each love language you have left this round.
+**Affirm, Service, Gifts, Time, Touch** each spend one resource and build affinity with your selected persona. **Break up** ends an existing bond; tap your bonded partner in the molecule view first, then press Break up to confirm. **Resource meters** along the bottom of your phone show how much of each love language you have left this round.
 
 ## The Five Love Languages
 
 Each action spends one unit of the matching resource. Resources replenish each round.
 
-| Action      | What it represents                                       |
-| ----------- | -------------------------------------------------------- |
-| **Affirm**  | Words of affirmation: verbal validation and praise       |
-| **Service** | Acts of service: doing things for someone                |
-| **Gifts**   | Receiving gifts: material expressions of care            |
-| **Time**    | Quality time: sustained presence and attention           |
-| **Touch**   | Physical touch: closeness and physical affection         |
+| Action      | What it represents                                 |
+| ----------- | -------------------------------------------------- |
+| **Affirm**  | Words of affirmation: verbal validation and praise |
+| **Service** | Acts of service: doing things for someone          |
+| **Gifts**   | Receiving gifts: material expressions of care      |
+| **Time**    | Quality time: sustained presence and attention     |
+| **Touch**   | Physical touch: closeness and physical affection   |
 
 A sixth action, **Break up**, ends an existing bond with a persona.
 
