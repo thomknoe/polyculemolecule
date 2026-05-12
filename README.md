@@ -167,7 +167,7 @@ NGROK_DOMAIN=yourname.ngrok-free.dev
 
 ## Research Context
 
-_Polycule Molecule_ is a design research prototype created for DESIGN 6197: Games in Research at Cornell University. The game uses play as a method to model and interrogate polyamorous relational structures, examining how the five love languages, asymmetric emotional resources, and hidden compatibility shape the networks people build together. The emergent typologies (Couple, Triad, Quad, Polycule) arise from player choices, resource constraints, and chance.
+_Polycule Molecule_ is a design research prototype created for DESIGN 6197: Games in Research at Cornell University. The game uses play as a method to model and interrogate polyamorous relational structures, examining how the five love languages, asymmetric emotional resources, and hidden compatibility shape the networks people build together. The emergent typologies (i.e., Couple, Triad, Quad, Polycule) arise from player choices, resource constraints, and chance. The player behavior also showcases this.
 
 ## Thematic Analysis — Playtesting Findings
 
