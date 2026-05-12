@@ -58,9 +58,7 @@ Four players (**The Affirmer**, **The Steward**, **The Gifter**, and **The Ancho
 
 **Controls**
 
-All input runs through the phone controller. At the title screen, a QR code appears; scan it on your phone to claim a player slot.
-
-The phone has two main sections: a thumbstick for moving your dot on the shared screen, and action buttons for spending love language resources.
+All input runs through the phone controller. At the title screen, a QR code appears; scan it on your phone to claim a player slot. The phone has two main sections: a thumbstick for moving your dot on the shared screen, and action buttons for spending love language resources.
 
 **Courting someone:**
 
@@ -72,7 +70,7 @@ You can also court personas who already belong to another player's polycule. Get
 
 **Actions:**
 
-**Affirm, Service, Gifts, Time, Touch** each spend one resource and build affinity with your selected persona. **Break up** ends an existing bond; tap your bonded partner in the molecule view first, then press Break up to confirm. **Resource meters** along the bottom of your phone show how much of each love language you have left this round.
+**Affirm, Service, Gifts, Time,** and **Touch** each spend one resource and build affinity with your selected persona. **Break up** ends an existing bond; tap your bonded partner in the molecule view first, then press again to confirm. **Resource meters** along the bottom of your phone show how much of each love language you have left in the round.
 
 ## The Five Love Languages
 
