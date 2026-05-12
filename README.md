@@ -215,11 +215,11 @@ _Players project personal and cultural meaning onto the game_
 >
 > "I feel like I took more of a competitive approach…"
 
-#### Personification & Apophenia (incl. Zodiac)
+#### Personification & Apophenia
 
 > "They're zodiac symbols… you just dated the entire zodiac." / "So the zodiac sign… dictate what the vibes are?"
 >
-> "Leo is out here being Sean from society."
+> "I'm out here being shunned from society."
 
 #### Identity Mirroring & Real-Life Insertion
 
