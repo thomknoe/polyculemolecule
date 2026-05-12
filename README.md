@@ -11,10 +11,10 @@ Polycule Molecule is a multiplayer relational building game where you court pote
 ## Videos
 
 [![Watch the trailer](https://utfs.io/f/nGnSqDveMsqxVTvkYd6rJe0alCDndF9sm64f7ik1oqbuM5UO)](https://www.youtube.com/watch?v=6UW5uM0o4Oc)
+[▶ Watch the trailer](https://www.youtube.com/watch?v=6UW5uM0o4Oc)
 
 [![Gameplay video](https://utfs.io/f/nGnSqDveMsqxmGTrNVjRJyeGzNLsqiK3drCnoHp7jO1acDgB)](https://www.youtube.com/watch?v=TQAZHHM-dMo)
-
----
+[▶ Gameplay video](https://www.youtube.com/watch?v=TQAZHHM-dMo)
 
 ## Screenshots
 
@@ -23,8 +23,6 @@ Polycule Molecule is a multiplayer relational building game where you court pote
 ![Bond formation and network visualization](screenshots/03-bond-network.png)
 ![Negotiation phase and bond network overview](screenshots/04-negotiation-screen.png)
 ![End-game dashboard with network typology](screenshots/05-endgame-dashboard.png)
-
----
 
 ## Getting Started
 
@@ -149,7 +147,8 @@ NGROK_DOMAIN=yourname.ngrok-free.dev
 
 > The authtoken is available at [dashboard.ngrok.com/authtokens](https://dashboard.ngrok.com/authtokens). The `NGROK_EXE` path is almost always required on macOS since Unity spawns processes outside the shell environment and won't find binaries installed via Homebrew or nvm unless the path is explicit.
 
-[![Phone controller walkthrough](https://utfs.io/f/nGnSqDveMsqxQlTxbN4ptfEy6lsGQgRBWMrJ9KFkU2edTLZc)](https://www.youtube.com/watch?v=ULUvtCjvUzc)
+[![Phone controller gameplay](https://utfs.io/f/nGnSqDveMsqxQlTxbN4ptfEy6lsGQgRBWMrJ9KFkU2edTLZc)](https://www.youtube.com/watch?v=ULUvtCjvUzc)
+[▶ Phone controller gameplay](https://www.youtube.com/watch?v=ULUvtCjvUzc)
 
 ![Phone controller — lobby screen](screenshots/phone-01-lobby.png)
 ![Phone controller — action pad](screenshots/phone-02-action-pad.png)
@@ -163,7 +162,8 @@ _Polycule Molecule_ is a design research prototype created for DESIGN 6197: Game
 > **Root theme:** _Meaning-Making in an Opaque, Scarcity-Driven Relational Economy_
 > Players impose narrative, identity, and strategy onto limited information, randomized symbols, and simultaneous action.
 
-[![Playtesting session](https://utfs.io/f/nGnSqDveMsqxO6P4sG0k5fKEn2LbBoPAuZ6XMTHDcNJ0QiG1)](https://www.youtube.com/watch?v=h4BhAhwitGY)
+[![Playtesting feedback](https://utfs.io/f/nGnSqDveMsqxO6P4sG0k5fKEn2LbBoPAuZ6XMTHDcNJ0QiG1)](https://www.youtube.com/watch?v=h4BhAhwitGY)
+[▶ Playtesting feedback](https://www.youtube.com/watch?v=h4BhAhwitGY)
 
 ![Playtesting photo](screenshots/playtest.png)
 
@@ -191,8 +191,6 @@ _How players actually navigate the system_
 >
 > "I wasn't sure how to do the sharing."
 
----
-
 ### Level 2 — Emotional & Relational Projection
 
 _Players project personal and cultural meaning onto the game_
@@ -219,8 +217,6 @@ _Players project personal and cultural meaning onto the game_
 >
 > "You and I are attached." / "That's my wife."
 
----
-
 ### Level 3 — Social & Cooperative Tension
 
 _Group dynamics and the pull between competition and cooperation_
@@ -236,8 +232,6 @@ _Group dynamics and the pull between competition and cooperation_
 #### Queer / Poly Aesthetic Resonance
 
 > "It kind of looks like the bisexual flag too." / "That's like perfect, that's like bisexuality right there."
-
----
 
 ### Level 4 — System Friction & Pacing Effects
 
