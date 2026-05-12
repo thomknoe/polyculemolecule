@@ -66,7 +66,7 @@ All input runs through the phone controller. At the title screen, a QR code appe
 2. In the **molecule view** at the top of your phone, tap a persona node to select who you want to court
 3. Press any love language button to spend an action toward that persona
 
-You can also court personas who already belong to another player's polycule. Get close on the shared screen, tap them in the molecule view to select them, then spend your actions on whoever you picked. Tap the same node again to deselect.
+You can also court personas who already belong to another player's polycule. Get close on the shared screen, tap them in the molecule view to select them, then spend your actions on whoever you picked. Tap the same node again to deselect. When you successfully court another persona, they will gain your color coding.
 
 **Actions:**
 
