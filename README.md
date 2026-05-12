@@ -147,6 +147,8 @@ NGROK_DOMAIN=yourname.ngrok-free.dev
 
 > The authtoken is available at [dashboard.ngrok.com/authtokens](https://dashboard.ngrok.com/authtokens). The `NGROK_EXE` path is almost always required on macOS since Unity spawns processes outside the shell environment and won't find binaries installed via Homebrew or nvm unless the path is explicit.
 
+[![Phone controller walkthrough](https://utfs.io/f/nGnSqDveMsqxQlTxbN4ptfEy6lsGQgRBWMrJ9KFkU2edTLZc)](https://www.youtube.com/watch?v=ULUvtCjvUzc)
+
 ![Phone controller — lobby screen](screenshots/phone-01-lobby.png)
 ![Phone controller — action pad](screenshots/phone-02-action-pad.png)
 
@@ -160,6 +162,8 @@ _Polycule Molecule_ is a design research prototype created for DESIGN 6197: Game
 > Players impose narrative, identity, and strategy onto limited information, randomized symbols, and simultaneous action.
 
 [![Playtesting session](https://utfs.io/f/nGnSqDveMsqxO6P4sG0k5fKEn2LbBoPAuZ6XMTHDcNJ0QiG1)](https://www.youtube.com/watch?v=h4BhAhwitGY)
+
+![Playtesting photo](screenshots/playtest.png)
 
 ### Level 1 — Strategic Adaptation
 
