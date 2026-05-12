@@ -4,14 +4,10 @@ The Unity project source and compiled macOS build are too large to store in this
 
 [Download Unity Files and App from Google Drive](https://drive.google.com/drive/folders/1JDWMN9-6NBDfXpaRcv5OmBn85xtFlfzq?usp=sharing)
 
----
-
 | File                    | Description                                   |
 | ----------------------- | --------------------------------------------- |
-| `Polycule Molecule.app` | macOS build — run directly, no Unity required |
-| `Unity_Files.zip`       | Full Unity 6000.3.6f1 project source          |
+| `Polycule Molecule.zip` | macOS build — run directly, no Unity required |
+| `Unity Files.zip`       | Full Unity 6000.3.6f1 project source          |
 
----
-
-> To play immediately, download `Polycule Molecule.app` and open it.
+> To play immediately, download `Polycule Molecule.zip` and open it.
 > To modify or extend the project, download `Unity_Files.zip` and open the extracted folder in Unity Hub.
