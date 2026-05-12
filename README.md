@@ -4,7 +4,7 @@
 
 **Collaborators:** Thomas Knoepffler, Atmika Pai, Nikhil Jain, Kim Dang
 
-Polycule Molecule is a multiplayer relational building game where you court potential lovers using limited resources and form different bonds and connections with others. A top-down social simulation for 4 players exploring polyamorous relational dynamics through movement, proximity, and the five love languages. Players share a single screen while each using their own phone as a controller, and simultaneously court persona nodes that drift through a shared arena. Over each round, bonds form, decay, and branch into emergent network shapes.
+Polycule Molecule is a multiplayer relational building game where you court potential lovers using limited resources and form bonds with others. A top-down social simulation for 4 players exploring polyamorous relational dynamics through movement, proximity, and the five love languages. Players share a single screen while each using their own phone as a controller, courting persona nodes that drift through a shared arena. Over each round, bonds form, decay, and branch into emergent network shapes.
 
 > **Platform:** macOS only. Windows and Linux ports are planned for a future release.
 
@@ -28,25 +28,25 @@ Polycule Molecule is a multiplayer relational building game where you court pote
 
 > **Downloads:** The compiled build and Unity project files are hosted on Google Drive due to their size.
 
-**Option A — Run the macOS build (no Unity required)**
+**Option A: Run the macOS build (no Unity required)**
 
 1. Download and open `Polycule Molecule.app` from the Google Drive link above
 2. The embedded server starts automatically on port 3847
-3. A QR code appears on screen — scan it with your phone to connect
+3. A QR code appears on screen; scan it with your phone to connect
 
-**Option B — Open through Unity**
+**Option B: Open through Unity**
 
 Requirements:
 
 - Unity **6000.3.6f1** (URP)
-- TextMeshPro — import via `Window → TextMeshPro → Import TMP Essential Resources`
-- Phones on the same Wi-Fi as the host machine (for LAN play) — see [Phone Controllers & Networking](#phone-controllers--networking) for internet play via ngrok
+- TextMeshPro, imported via `Window → TextMeshPro → Import TMP Essential Resources`
+- Phones on the same Wi-Fi as the host machine (for LAN play). See [Phone Controllers & Networking](#phone-controllers--networking) for internet play via ngrok
 
 Steps:
 
 1. Open `Unity_Files/` in Unity Hub
 2. Open `Assets/Scenes/SampleScene`
-3. Press **Play** — everything bootstraps automatically
+3. Press **Play** and everything bootstraps automatically
 
 > If text renders as boxes, go to `Edit → Project Settings → TextMeshPro → Settings` and set `Assets/Fonts/unifont SDF` as the default font asset.
 
@@ -54,29 +54,46 @@ Steps:
 
 **The Field**
 
-Four players — **The Affirmer**, **The Steward**, **The Gifter**, and **The Anchor** — move simultaneously through a shared arena. One persona node appears per round and drifts through the field. To court a persona, walk up to it and spend love language actions while within proximity range.
+Four players (**The Affirmer**, **The Steward**, **The Gifter**, and **The Anchor**) move simultaneously through a shared arena. One persona node appears per round and drifts through the field. To court a persona, walk up to it and spend love language actions while within proximity range.
 
 **Controls**
 
-All input is handled through the phone controller. At the title screen a QR code appears — scan it on your phone to claim a player slot. The phone acts as a joystick and action pad: move with the on-screen thumbstick and tap love language buttons to interact with nearby personas.
+All input runs through the phone controller. At the title screen, a QR code appears; scan it on your phone to claim a player slot.
+
+The phone has two main sections: a thumbstick for moving your dot on the shared screen, and action buttons for spending love language resources.
+
+**Courting someone:**
+
+1. Use the **joystick** to walk your dot toward a persona on the shared TV screen
+2. In the **molecule view** at the top of your phone, tap a persona node to select who you want to court
+3. Press any love language button to spend an action toward that persona
+
+You can also court personas who already belong to another player's polycule. Get close on the shared screen, tap them in the molecule view to select them, then spend your actions on whoever you picked. Tap the same node again to deselect.
+
+**Actions:**
+
+- **Affirm, Service, Gifts, Time, Touch** each spend one resource and build affinity with your selected persona
+- **Break up** ends an existing bond; tap your bonded partner in the molecule view first, then press Break up to confirm
+
+**Resource meters** along the bottom of your phone show how much of each love language you have left this round.
 
 ## The Five Love Languages
 
 Each action spends one unit of the matching resource. Resources replenish each round.
 
-| Action      | What it represents                                  |
-| ----------- | --------------------------------------------------- |
-| **Affirm**  | Words of affirmation — verbal validation and praise |
-| **Service** | Acts of service — doing things for someone          |
-| **Gifts**   | Receiving gifts — material expressions of care      |
-| **Time**    | Quality time — sustained presence and attention     |
-| **Touch**   | Physical touch — closeness and physical affection   |
+| Action      | What it represents                                       |
+| ----------- | -------------------------------------------------------- |
+| **Affirm**  | Words of affirmation: verbal validation and praise       |
+| **Service** | Acts of service: doing things for someone                |
+| **Gifts**   | Receiving gifts: material expressions of care            |
+| **Time**    | Quality time: sustained presence and attention           |
+| **Touch**   | Physical touch: closeness and physical affection         |
 
 A sixth action, **Break up**, ends an existing bond with a persona.
 
 ## Player Archetypes
 
-Each archetype starts with a different distribution of love language resources, shaping their natural approach. The tension — your strongest resource may not match a persona's hidden propensities — is the core strategic dilemma.
+Each archetype starts with a different distribution of love language resources, shaping their natural approach. Your strongest resource may not match a persona's hidden propensities, and that friction is the core strategic tension.
 
 | Archetype        | Strongest resource   |
 | ---------------- | -------------------- |
@@ -89,10 +106,10 @@ Each archetype starts with a different distribution of love language resources, 
 
 Each round is marked by a zodiac glyph, one per round in order: ♈︎ ♉︎ ♊︎ ♋︎ ♌︎ ♍︎ ♎︎ ♏︎ ♐︎ ♑︎ ♒︎ ♓︎
 
-1. **Spawn** — A persona arrives with a name, two traits, a mood, a story, and hidden love-language propensities (ranging from strongly positive to negative)
-2. **Courting** — All players move freely; actions fire when in proximity. Each player has **10 actions per turn**
-3. **Resolution** — `affinity delta = action × persona propensity`. A bond forms once affinity reaches threshold (**6**). Idle bonds decay over time
-4. **Negotiation** — A brief pause to discuss the round, inspect revealed propensities, and plan next moves
+1. **Spawn**: A persona arrives with a name, two traits, a mood, a story, and hidden love-language propensities ranging from strongly positive to negative
+2. **Courting**: All players move freely; actions fire when in proximity. Each player has **10 actions per turn**
+3. **Resolution**: `affinity delta = action × persona propensity`. A bond forms once affinity reaches threshold (**6**). Idle bonds decay over time
+4. **Negotiation**: A brief pause to discuss the round, inspect revealed propensities, and plan next moves
 
 After 12 rounds the end-game dashboard shows bond counts, network typology, and cumulative affinity per player-persona pair.
 
@@ -110,7 +127,7 @@ Bonds render as glowing edges between player nodes and persona nodes in a live s
 
 ## Phone Controllers & Networking
 
-The game runs an embedded HTTP + WebSocket server on **port 3847** the moment Play is pressed — no Node.js or external server setup required.
+The game runs an embedded HTTP + WebSocket server on **port 3847** the moment Play is pressed. No Node.js or external server setup required.
 
 **Default: LAN (same Wi-Fi)**
 
@@ -118,7 +135,7 @@ By default, the QR code encodes the host machine's local network IP. Players mus
 
 **Extended: Internet play via ngrok**
 
-For play across different networks — including remote participants or public playtesting — the build supports tunneling through [ngrok](https://ngrok.com). When a tunnel is active, the QR code automatically encodes the public HTTPS URL instead of the LAN IP.
+For play across different networks, including remote participants or public playtesting, the build supports tunneling through [ngrok](https://ngrok.com). When a tunnel is active, the QR code automatically encodes the public HTTPS URL instead of the LAN IP.
 
 The game discovers an active tunnel through three fallback steps:
 
@@ -145,7 +162,7 @@ NGROK_DOMAIN=yourname.ngrok-free.dev
 # PUBLIC_CONTROLLER_URL=https://yourname.ngrok-free.dev
 ```
 
-> The authtoken is available at [dashboard.ngrok.com/authtokens](https://dashboard.ngrok.com/authtokens). The `NGROK_EXE` path is almost always required on macOS since Unity spawns processes outside the shell environment and won't find binaries installed via Homebrew or nvm unless the path is explicit.
+> The authtoken is available at [dashboard.ngrok.com/authtokens](https://dashboard.ngrok.com/authtokens). The `NGROK_EXE` path is almost always required on macOS, since Unity spawns processes outside the shell environment and needs an explicit path to locate binaries installed via Homebrew or nvm.
 
 [![Phone controller gameplay](https://utfs.io/f/nGnSqDveMsqxQlTxbN4ptfEy6lsGQgRBWMrJ9KFkU2edTLZc)](https://www.youtube.com/watch?v=ULUvtCjvUzc)
 [▶ Phone controller gameplay](https://www.youtube.com/watch?v=ULUvtCjvUzc)
@@ -155,7 +172,7 @@ NGROK_DOMAIN=yourname.ngrok-free.dev
 
 ## Research Context
 
-_Polycule Molecule_ is a design research prototype created for DESIGN 6197: Games in Research at Cornell University. The game uses play as a method to model and interrogate polyamorous relational structures — examining how the five love languages, asymmetric emotional resources, and hidden compatibility shape the networks people build together. The emergent typologies (Couple, Triad, Quad, Polycule) are not predetermined outcomes but consequences of player choices, resource constraints, and chance.
+_Polycule Molecule_ is a design research prototype created for DESIGN 6197: Games in Research at Cornell University. The game uses play as a method to model and interrogate polyamorous relational structures, examining how the five love languages, asymmetric emotional resources, and hidden compatibility shape the networks people build together. The emergent typologies (Couple, Triad, Quad, Polycule) arise from player choices, resource constraints, and chance.
 
 ## Thematic Analysis — Playtesting Findings
 
