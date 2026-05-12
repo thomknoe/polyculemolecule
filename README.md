@@ -38,7 +38,7 @@ Polycule Molecule is a multiplayer relational building game where you court pote
 
 Requirements:
 
-- Unity **6000.3.6f1** (URP)
+- Unity 6000.3.6f1 (URP)
 - TextMeshPro, imported via `Window → TextMeshPro → Import TMP Essential Resources`
 - Phones on the same Wi-Fi as the host machine (for LAN play). See [Phone Controllers & Networking](#phone-controllers--networking) for internet play via ngrok
 
@@ -46,7 +46,7 @@ Steps:
 
 1. Open `Unity_Files/` in Unity Hub
 2. Open `Assets/Scenes/SampleScene`
-3. Press **Play** and everything bootstraps automatically
+3. Press Play and everything bootstraps automatically
 
 > If text renders as boxes, go to `Edit → Project Settings → TextMeshPro → Settings` and set `Assets/Fonts/unifont SDF` as the default font asset.
 
@@ -62,15 +62,15 @@ All input runs through the phone controller. At the title screen, a QR code appe
 
 **Courting someone:**
 
-1. Use the **joystick** to walk your dot toward a persona on the shared TV screen
-2. In the **molecule view** at the top of your phone, tap a persona node to select who you want to court
+1. Use the joystick to walk your dot toward a persona on the shared TV screen
+2. In the molecule view at the top of your phone, tap a persona node to select who you want to court
 3. Press any love language button to spend an action toward that persona
 
 You can also court personas who already belong to another player's polycule. Get close on the shared screen, tap them in the molecule view to select them, then spend your actions on whoever you picked. Tap the same node again to deselect. When you successfully court another persona, they will gain your color coding.
 
 **Actions:**
 
-**Affirm, Service, Gifts, Time,** and **Touch** each spend one resource and build affinity with your selected persona. **Break up** ends an existing bond; tap your bonded partner in the molecule view first, then press again to confirm. **Resource meters** along the bottom show how much of each love language you have left in the round.
+**Affirm, Service, Gifts, Time,** and **Touch** each spend one resource and build affinity with your selected persona. **Break up** ends an existing bond; tap your bonded partner in the molecule view first, then press again to confirm. Resource meters along the bottom show how much of each love language you have left in the round.
 
 ## The Five Love Languages
 
@@ -102,8 +102,8 @@ Each archetype starts with a different distribution of love language resources, 
 Each round is marked by a zodiac glyph, one per round in order: ♈︎ ♉︎ ♊︎ ♋︎ ♌︎ ♍︎ ♎︎ ♏︎ ♐︎ ♑︎ ♒︎ ♓︎
 
 1. **Spawn**: A persona arrives with a name, two traits, a mood, a story, and hidden love-language propensities ranging from strongly positive to negative
-2. **Courting**: All players move freely; actions fire when in proximity. Each player has **10 actions per turn**
-3. **Resolution**: `affinity delta = action × persona propensity`. A bond forms once affinity reaches threshold (**6**). Idle bonds decay over time
+2. **Courting**: All players move freely; actions fire when in proximity. Each player has 10 actions per turn
+3. **Resolution**: A bond forms once affinity reaches a threshold. Idle bonds decay over time
 4. **Negotiation**: A brief pause to discuss the round, inspect revealed propensities, and plan next moves
 
 After 12 rounds the end-game dashboard shows bond counts, network typology, and cumulative affinity per player-persona pair.
@@ -122,7 +122,7 @@ Bonds render as glowing edges between player nodes and persona nodes in a live s
 
 ## Phone Controllers & Networking
 
-The game runs an embedded HTTP + WebSocket server on **port 3847** the moment Play is pressed. No Node.js or external server setup required.
+The game runs an embedded HTTP + WebSocket server on port 3847 the moment Play is pressed. No Node.js or external server setup required.
 
 **Default: LAN (same Wi-Fi)**
 
