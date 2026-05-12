@@ -247,7 +247,7 @@ _Group dynamics and the pull between competition and cooperation_
 
 ### Level 4: System Friction & Pacing Effects
 
-_How the rules shape — or frustrate — behavior_
+_How the rules shape, or frustrate, behavior_
 
 #### Learning Curve vs. Round Length
 
