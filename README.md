@@ -2,6 +2,8 @@
 
 # Polycule Molecule
 
+**Collaborators:** Thomas Knoepffler, Atmika Pai, Nikhil Jain, Kim Dang
+
 Polycule Molecule is a multiplayer relational building game where you court potential lovers using limited resources and form different bonds and connections with others. A top-down social simulation for 4 players exploring polyamorous relational dynamics through movement, proximity, and the five love languages. Players share a single screen while each using their own phone as a controller, and simultaneously court persona nodes that drift through a shared arena. Over each round, bonds form, decay, and branch into emergent network shapes.
 
 > **Platform:** macOS only. Windows and Linux ports are planned for a future release.
